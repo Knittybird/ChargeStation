@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-10-20T23:09:44.215Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36" etag="ePtjtfXBeUjoBwLIuZ6l" version="13.8.1" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-20T23:16:20.173Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36" etag="4jiWCCEUDOtSGfckIbty" version="13.8.1" type="github">
   <diagram id="Nbc5YjaRiRx2JmKLXa7P" name="Page-1">
     <mxGraphModel dx="868" dy="482" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -7,10 +7,10 @@
         <mxCell id="dNirgCy7XSi5AXV2ix1Z-1" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="170" y="50" width="540" height="540" as="geometry" />
         </mxCell>
-        <mxCell id="dNirgCy7XSi5AXV2ix1Z-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#055C13;" vertex="1" parent="1">
+        <mxCell id="dNirgCy7XSi5AXV2ix1Z-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;" vertex="1" parent="1">
           <mxGeometry x="180" y="60" width="520" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="dNirgCy7XSi5AXV2ix1Z-4" value="&lt;h3&gt;&lt;font color=&quot;#ffffff&quot;&gt;Map the charging stations in the area&lt;/font&gt;&lt;/h3&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="dNirgCy7XSi5AXV2ix1Z-4" value="&lt;h3&gt;Map the charging stations in the area&lt;/h3&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="260" y="130" width="360" height="80" as="geometry" />
         </mxCell>
         <mxCell id="dNirgCy7XSi5AXV2ix1Z-18" value="" style="group" vertex="1" connectable="0" parent="1">
