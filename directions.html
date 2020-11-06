@@ -12,19 +12,21 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
     />
   </head>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-5">
-    <!--<a class="navbar-brand" href="#">hello world</a>-->
-    <div class="navbar-collapse">
-    <ul class="navbar-nav mr-auto">
-    <li class="nav-item active"><a class="nav-link" href="index.html">home</a></li>
-    <li class="nav-item"><a class="nav-link" href="about.html">about</a></li>
-    <li class="nav-item"><a class="nav-link" href="search.html">search</a></li>
-    <li class="nav-item"><a class="nav-link" href="directions.html">directions</a></li>
-    </ul>
-    </div>
-    </nav>
   <body>
-    <form class="directions">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-5">
+      <!--<a class="navbar-brand" href="#">hello world</a>-->
+      <div class="navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">about</a></li>
+          <li class="nav-item"><a class="nav-link" href="search.html">search</a></li>
+          <li class="nav-item"><a class="nav-link" href="directions.html">directions</a></li>
+        </ul>
+      </div>
+    </nav>
+  
+    <div class="container">
+      <form class="directions">
         <h1>Plan a Route</h1>
         <div>
             <label for="to">To <span class="req_field">(required)</span></label>
@@ -38,5 +40,6 @@
             <input id="search" name="search" type="submit" value="Search">
             </div> 
     </form>
+    </div>
   </body>
 </html>
