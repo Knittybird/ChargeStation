@@ -31,20 +31,19 @@
     </nav>
   
     <div class="container">
-      <form class="directions">
-        <h1>Plan a Route</h1>
-        <div>
-            <label for="to">To <span class="req_field">(required)</span></label>
-            <input type="text" id="to" name="to" required>
+      <form>
+        <div class="form-group">
+          <label for="to">To*</label>
+          <input type="text" class="form-control" id="to" >
         </div>
-        <div>
-            <label for="from">From <span class="req_field">(required)</span></label>
-            <input type="text" id="from" name="from" required>
+        <div class="form-group">
+          <label for="from">From*</label>
+          <input type="text" class="form-control" id="from" >
         </div>
-        <div>
-            <input id="search" name="search" type="submit" value="Search">
-        </div> 
-    </form>
+          <input type="submit" class="btn btn-primary" value="Submit" />
+          <input type="reset" class="btn btn-secondary" value="Reset" />
+        </form>
+      </div>
     </div>
   </body>
 </html>
