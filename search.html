@@ -31,58 +31,31 @@
     </nav>
   
     <div class="container">
-      <form class="sub_form">
+      <form>
         <h1>Find A Charger</h1>
-        <div>
-        <label for="location">Location <span class="req_field">(required)</span></label>
-        <input type="text" id="location" name="location" required>
+        <div class="form-group">
+          <label for="location">Location*</label>          
+          <input type="text" class="form-control" id="location" required >
         </div>
-        <div>
-        <label for="chargerType">Charger Type:</label>
-        <select name="chargerType" id="chargerType">
+        <div class="form-group">
+          <label for="chargerType">Charger Type:</label>
+          <select class="form-control" id="chargerType" >
               <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-        </select>
+          </select>
         </div>
-        <div>
-            <label for="radius">Radius(mi):</label>
-            <select name="radius" id="radius">
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-            </select>
-        </div> 
-        <div>
-        <input id="search" name="search" type="submit" value="Search">
-        </div> 
-      </form>
+        <div class="form-group">
+          <label for="radius">Radius(mi):</label>
+          <select class="form-control" id="radius">
+               <option value="1">1</option>
+               <option value="1">5</option>
+               <option value="1">10</option>
+               <option value="1">15</option>
+               <option value="1">25</option>
+               <option value="1">50</option>
+          </select>
+        </div>
+          <input type="submit" class="btn btn-primary" value="Go" />
+        </form>
     </div>
   </body>
 </html>
