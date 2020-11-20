@@ -11,6 +11,7 @@
   "devDependencies": {
     "@types/node": "^14.14.9",
     "express": "^4.17.1",
+    "pug": "^3.0.0",
     "request": "^2.88.2"
   },
   "dependencies": {
