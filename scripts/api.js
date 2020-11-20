@@ -9,7 +9,6 @@ var temp = "https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c05
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'pug');
 app.use(express.json());
-var results = [];
 function options(options) {
     var output = "";
     var o = "";
@@ -20,6 +19,7 @@ function options(options) {
             output += o;
     return output;
 }
+var results = [];
 //Figure out charger info/route info
 request(temp, function (error, response, body) {
     if (!error && response.statusCode == 200) {
