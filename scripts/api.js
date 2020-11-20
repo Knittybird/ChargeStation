@@ -3,6 +3,8 @@ var app = express();
 var port = parseInt(process.env.PORT, 10) || 5000;
 var request = require('request');
 var url = 'https://restcountries.eu/rest/v2/all'; //'https://api.openchargemap.io/v3/';
+app.set('views', __dirname + '/../views');
+app.set('view engine', 'pug');
 app.use(express.json());
 app.get('/', function (req, res) {
     request(url, function (error, response, body) {
@@ -11,13 +13,12 @@ app.get('/', function (req, res) {
             console.log(json_body);
             var results = [];
             var row = '';
-            var about = document.getElementById("about");
             for (row in json_body) {
-                var first = document.createTextNode(json_body[row].name);
-                var sec = document.createTextNode(json_body[row].population);
-                about.appendChild(first);
-                about.appendChild(sec);
+                results.push({ 'name': json_body[row].name, 'population': json_body[row].population }); //TODO Style correctly               
             }
+            res.render('index', {
+                data: results
+            });
         }
     });
 });

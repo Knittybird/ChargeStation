@@ -4,6 +4,9 @@ const port : number = parseInt(process.env.PORT, 10) || 5000;
 const request : any = require('request');
 const url : string = 'https://restcountries.eu/rest/v2/all'; //'https://api.openchargemap.io/v3/';
 
+app.set('views', __dirname + '/../views');
+app.set('view engine', 'pug');
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -14,8 +17,6 @@ app.get('/', (req, res) => {
         console.log(json_body)
         let results : Object[] = [];
         let row : string = ''
-        let about : any = document.getElementById("about");
-
         for(row in json_body)
             {
                 results.push({'name' : json_body[row].name, 'population' : json_body[row].population});//TODO Style correctly               
@@ -23,14 +24,12 @@ app.get('/', (req, res) => {
         
     
     res.render('index', {
-        title: 'Main',
-        heading: 'Welcome to the Main Page',
         data: results
-        });
-        });
+    });
     }
     });
 });
+
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
