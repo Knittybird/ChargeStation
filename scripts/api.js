@@ -1,25 +1,45 @@
 var express = require('express');
 var app = express();
 var port = parseInt(process.env.PORT, 10) || 5000;
-var request = require('request');
+var request = require('request-promise');
 var url = 'https://restcountries.eu/rest/v2/all'; //'https://api.openchargemap.io/v3/';
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'pug');
 app.use(express.json());
-app.get('/', function (req, res) {
-    request(url, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var json_body = JSON.parse(body);
-            console.log(json_body);
-            var results = [];
-            var row = '';
-            for (row in json_body) {
-                results.push({ 'name': json_body[row].name, 'population': json_body[row].population }); //TODO Style correctly               
-            }
-            res.render('index', {
-                data: results
-            });
+var results = [];
+request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        var json_body = JSON.parse(body);
+        console.log(json_body);
+        var row = '';
+        for (row in json_body) {
+            results.push({ 'name': json_body[row].name, 'population': json_body[row].population }); //TODO Style correctly               
         }
+    }
+});
+app.get('/', function (req, res) {
+    res.render('index', {
+        data: results
+    });
+});
+app.get('/index', function (req, res) {
+    res.render('index', {
+        data: results
+    });
+});
+app.get('/directions', function (req, res) {
+    res.render('directions', {
+        data: results
+    });
+});
+app.get('/about', function (req, res) {
+    res.render('about', {
+        data: results
+    });
+});
+app.get('/search', function (req, res) {
+    res.render('index', {
+        data: results
     });
 });
 app.listen(port, function () {
@@ -58,5 +78,4 @@ app.get('/main', (req : any, res : any) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
-
 */ 

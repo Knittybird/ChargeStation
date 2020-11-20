@@ -4,7 +4,7 @@
   "description": "Where's a charger app",
   "main": "api.js",
   "scripts": {
-    "test": ""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ben Davis",
   "license": "ISC",
@@ -12,7 +12,8 @@
     "@types/node": "^14.14.9",
     "express": "^4.17.1",
     "pug": "^3.0.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
   },
   "dependencies": {
     "express": "^4.17.1",
