@@ -4,7 +4,7 @@
   "description": "Where's a charger app",
   "main": "api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": ""
   },
   "author": "Ben Davis",
   "license": "ISC",
