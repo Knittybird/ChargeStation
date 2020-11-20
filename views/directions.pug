@@ -1,7 +1,7 @@
 extends index.pug
 block main
   .container
-    form
+    form(action="/directions_results" method="POST")
       h1 Plan a Route
       .form-group
         label(for='to') To*

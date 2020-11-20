@@ -1,7 +1,7 @@
 extends index.pug
 block main
   .container
-    form
+    form(action='/search_results' method='post')
       h1 Find A Charger
       .form-group
         label(for='location') Location*

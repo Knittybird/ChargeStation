@@ -27,31 +27,43 @@ request(url, function (error : number, response : any, body : any) : void{
 
 app.get('/', (req, res) => {
     res.render('index', {
-        data: results
+        Title : 'Home'
     });
 });
 
 app.get('/index', (req, res) => {
     res.render('index', {
-        data: results
+        Title : 'Home'
     });
 });
 
 app.get('/directions', (req, res) => {
     res.render('directions', {
-        data: results
+        Title : 'Directions'
     });
 });
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        data: results
+        Title : 'About'
     });
 });
 
 app.get('/search', (req, res) => {
-    res.render('index', {
-        data: results
+    res.render('search', {
+        Title : 'Search'
+    });
+});
+
+app.post('/search_results', (req, res) => {
+    res.render('search_results', {
+        Title : 'Results'
+    });
+});
+
+app.post('/directions_results', (req, res) => {
+    res.render('directions_results', {
+        Title : 'Results'
     });
 });
 

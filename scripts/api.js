@@ -20,27 +20,37 @@ request(url, function (error, response, body) {
 });
 app.get('/', function (req, res) {
     res.render('index', {
-        data: results
+        Title: 'Home'
     });
 });
 app.get('/index', function (req, res) {
     res.render('index', {
-        data: results
+        Title: 'Home'
     });
 });
 app.get('/directions', function (req, res) {
     res.render('directions', {
-        data: results
+        Title: 'Directions'
     });
 });
 app.get('/about', function (req, res) {
     res.render('about', {
-        data: results
+        Title: 'About'
     });
 });
 app.get('/search', function (req, res) {
-    res.render('index', {
-        data: results
+    res.render('search', {
+        Title: 'Search'
+    });
+});
+app.post('/search_results', function (req, res) {
+    res.render('search_results', {
+        Title: 'Results'
+    });
+});
+app.post('/directions_results', function (req, res) {
+    res.render('directions_results', {
+        Title: 'Results'
     });
 });
 app.listen(port, function () {
