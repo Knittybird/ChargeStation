@@ -2,25 +2,41 @@ const express : any = require('express');
 const app : any = express();
 const port : number = parseInt(process.env.PORT, 10) || 5000;
 const request : any = require('request-promise');
-const url : string = 'https://restcountries.eu/rest/v2/all'; //'https://api.openchargemap.io/v3/';
-
+const base : string = 'https://api.openchargemap.io/v3/?'; //'https://api.openchargemap.io/v3/';
+const key : string = '8bc4f8db-272f-458b-82f7-c052a5c53c9a'
+const url : string = base + 'key=' + key;
+const temp : string = "https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&output=json&countrycode=US&maxresults=10";
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'pug');
 
 app.use(express.json());
 
+function options(options : string []) : string {
+
+    let output : string =""
+    let o : string = ""
+    for(o in options)
+        if (output == "")
+            output = o;
+        else
+            output += o;
+
+    return output;
+
+}
+
 let results : Object[] = [];
 
 //Figure out charger info/route info
-request(url, function (error : number, response : any, body : any) : void{
+request(temp, function (error : number, response : any, body : any) : void{
     if (!error && response.statusCode == 200) {
         let json_body : Object = JSON.parse(body);
         console.log(json_body)
-        let row : string = ''
+        /*let row : string = ''
         for(row in json_body)
             {
                 results.push({'name' : json_body[row].name, 'population' : json_body[row].population});//TODO Style correctly               
-            }
+            }*/
 
     }
 });

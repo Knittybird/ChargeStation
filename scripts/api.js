@@ -2,20 +2,34 @@ var express = require('express');
 var app = express();
 var port = parseInt(process.env.PORT, 10) || 5000;
 var request = require('request-promise');
-var url = 'https://restcountries.eu/rest/v2/all'; //'https://api.openchargemap.io/v3/';
+var base = 'https://api.openchargemap.io/v3/?'; //'https://api.openchargemap.io/v3/';
+var key = '8bc4f8db-272f-458b-82f7-c052a5c53c9a';
+var url = base + 'key=' + key;
+var temp = "https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&output=json&countrycode=US&maxresults=10";
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'pug');
 app.use(express.json());
 var results = [];
+function options(options) {
+    var output = "";
+    var o = "";
+    for (o in options)
+        if (output == "")
+            output = o;
+        else
+            output += o;
+    return output;
+}
 //Figure out charger info/route info
-request(url, function (error, response, body) {
+request(temp, function (error, response, body) {
     if (!error && response.statusCode == 200) {
         var json_body = JSON.parse(body);
         console.log(json_body);
-        var row = '';
-        for (row in json_body) {
-            results.push({ 'name': json_body[row].name, 'population': json_body[row].population }); //TODO Style correctly               
-        }
+        /*let row : string = ''
+        for(row in json_body)
+            {
+                results.push({'name' : json_body[row].name, 'population' : json_body[row].population});//TODO Style correctly
+            }*/
     }
 });
 app.get('/', function (req, res) {

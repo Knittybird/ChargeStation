@@ -5,18 +5,18 @@ block main
       h1 Find A Charger
       .form-group
         label(for='location') Location*
-        input#location.form-control(type='text' required='')
+        input(name="location")#location.form-control(type='text' required)
       .form-group
         label(for='chargerType') Charger Type:
-        select#chargerType.form-control
+        select(name="chargerType")#chargerType.form-control
           option(value='')
       .form-group
         label(for='radius') Radius(mi):
-        select#radius.form-control
+        select(name="radius")#radius.form-control
           option(value='1') 1
-          option(value='1') 5
-          option(value='1') 10
-          option(value='1') 15
-          option(value='1') 25
-          option(value='1') 50
+          option(value='5') 5
+          option(value='10') 10
+          option(value='15') 15
+          option(value='25') 25
+          option(value='50') 50
       input.btn.btn-primary(type='submit' value='Go')

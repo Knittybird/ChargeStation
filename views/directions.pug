@@ -5,8 +5,8 @@ block main
       h1 Plan a Route
       .form-group
         label(for='to') To*
-        input#to.form-control(type='text')
+        input#to.form-control(type='text' name="to" required)
       .form-group
         label(for='from') From*
-        input#from.form-control(type='text')
+        input#from.form-control(type='text' name="from" required)
       input.btn.btn-primary(type='submit' value='Go')
