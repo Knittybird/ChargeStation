@@ -7,6 +7,7 @@ app.set('views', __dirname + '/../views');
 app.set('view engine', 'pug');
 app.use(express.json());
 var results = [];
+//Figure out charger info/route info
 request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
         var json_body = JSON.parse(body);

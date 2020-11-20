@@ -1,28 +1,12 @@
-doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  title About
-  // <link rel="stylesheet" href="" />
-  link(rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css')
-nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  a.navbar-brand(href='#') Where&apos;s A Charger?
-  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
-    span.navbar-toggler-icon
-  #navbarNavAltMarkup.collapse.navbar-collapse
-    .navbar-nav
-      a.nav-item.nav-link(href='index') Home 
-      a.nav-item.nav-link(href='about') About
-      a.nav-item.nav-link(href='search') Search
-      a.nav-item.nav-link(href='directions') Directions
-.container
-  form
-    h1 Plan a Route
-    .form-group
-      label(for='to') To*
-      input#to.form-control(type='text')
-    .form-group
-      label(for='from') From*
-      input#from.form-control(type='text')
-    input.btn.btn-primary(type='submit' value='Go')
+extends index.pug
+block main
+  .container
+    form
+      h1 Plan a Route
+      .form-group
+        label(for='to') To*
+        input#to.form-control(type='text')
+      .form-group
+        label(for='from') From*
+        input#from.form-control(type='text')
+      input.btn.btn-primary(type='submit' value='Go')

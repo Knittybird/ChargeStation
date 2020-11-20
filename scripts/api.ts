@@ -11,6 +11,7 @@ app.use(express.json());
 
 let results : Object[] = [];
 
+//Figure out charger info/route info
 request(url, function (error : number, response : any, body : any) : void{
     if (!error && response.statusCode == 200) {
         let json_body : Object = JSON.parse(body);

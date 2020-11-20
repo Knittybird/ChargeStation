@@ -1,31 +1,13 @@
-doctype html
-| PASTE YOUR HTML CODE HERE
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  title About
-  // <link rel="stylesheet" href="" />
-  link(rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css')
-nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  a.navbar-brand(href='#') Where&apos;s A Charger?
-  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
-    span.navbar-toggler-icon
-  #navbarNavAltMarkup.collapse.navbar-collapse
-    .navbar-nav
-      a.nav-item.nav-link(href='index') Home 
-      a.nav-item.nav-link(href='about') About
-      a.nav-item.nav-link(href='search') Search
-      a.nav-item.nav-link(href='directions') Directions
-.container
-  #title
-    h1 About
-    // Necessary for adding a background image
-  section
-    h2 Usage
-    p
-      | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos perferendis voluptas voluptate dolorum cupiditate ullam veniam natus quis placeat explicabo? Tempora odit architecto provident quod aspernatur earum excepturi voluptates mollitia?Provident eligendi, illo aliquid ut saepe perspiciatis ab deleniti doloremque eaque sed magni, fuga dicta delectus dignissimos iure ipsa ea placeat nobis similique vero fugit architecto facere? Numquam, repellendus cupiditate.
-  section
-    h2 Charger Types
-    p
-      | Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste neque libero molestias, alias quidem sed animi, illo quibusdam nihil suscipit placeat architecto delectus eligendi perferendis eaque ipsum soluta voluptatibus minus!Dignissimos illum pariatur magnam quis nobis assumenda, quam mollitia, laboriosam consequuntur ratione ipsum voluptatibus fuga. Sed vitae deleniti nisi quas eaque perferendis sit, ipsam corrupti sint dicta cumque eligendi unde!
+extends index.pug
+block main
+  .container
+    #title
+      h1 About
+    section
+      h2 Usage
+      p
+        | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos perferendis voluptas voluptate dolorum cupiditate ullam veniam natus quis placeat explicabo? Tempora odit architecto provident quod aspernatur earum excepturi voluptates mollitia?Provident eligendi, illo aliquid ut saepe perspiciatis ab deleniti doloremque eaque sed magni, fuga dicta delectus dignissimos iure ipsa ea placeat nobis similique vero fugit architecto facere? Numquam, repellendus cupiditate.
+    section
+      h2 Charger Types
+      p
+        | Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste neque libero molestias, alias quidem sed animi, illo quibusdam nihil suscipit placeat architecto delectus eligendi perferendis eaque ipsum soluta voluptatibus minus!Dignissimos illum pariatur magnam quis nobis assumenda, quam mollitia, laboriosam consequuntur ratione ipsum voluptatibus fuga. Sed vitae deleniti nisi quas eaque perferendis sit, ipsam corrupti sint dicta cumque eligendi unde!
