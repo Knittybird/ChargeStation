@@ -2,6 +2,10 @@
   "name": "final_465",
   "version": "1.0.0",
   "description": "Where's a charger app",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Knittybird/ChargeStation.git"
+  },
   "main": "api.js",
   "scripts": {
     "start": "node app.js",
