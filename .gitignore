@@ -1,7 +1,4 @@
 node_modules/
-<<<<<<< HEAD
 .vscode/
 gmaps/
-=======
-vendors/bootstrap/
->>>>>>> directories
+.env
