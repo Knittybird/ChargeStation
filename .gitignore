@@ -1,0 +1,5 @@
+node_modules/
+.vscode/
+gmaps/
+.env
+package-lock.json
