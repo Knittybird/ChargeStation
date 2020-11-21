@@ -4,9 +4,10 @@ const port : number = parseInt(process.env.PORT, 10) || 5000;
 const request : any = require('request-promise');
 const base : string = 'https://api.openchargemap.io/v3/?'; //'https://api.openchargemap.io/v3/';
 const chargeKey : string = process.env.OPENCHARGE_KEY
+const mapKey : string = process.env.MAP_KEY
 const url : string = base + 'key=' + chargeKey;
 const temp : string = `https://api.openchargemap.io/v3/poi/?key=${chargeKey}&output=json&countrycode=US&maxresults=20`;
-const gurl : string = `https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_0ao-hnjTGFAdtsfRhIKhm_BK2zhKMg&libraries=places&callback=initMap`
+const gurl : string = `https://maps.googleapis.com/maps/api/js?key=${mapKey}&libraries=places&callback=initMap`
 
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'pug');
