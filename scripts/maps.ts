@@ -27,9 +27,17 @@ import {Loader} from "@googlemaps/js-api-loader";
             zoom: 8,
           });
         };
-    });
 
-    /*    // Initialize variables
+        function handleLocationError(browserHasGeolocation : boolean, infoWindow : any) : any {
+            // Set default location to Sydney, Australia
+            pos = {lat: -33.856, lng: 151.215};
+            map = new google.maps.Map(document.getElementById('map'), {
+            center: pos,
+            zoom: 15
+            });
+    
+
+    // Initialize variables
         bounds = new google.maps.LatLngBounds();
         infoWindow = new google.maps.InfoWindow;
         currentInfoWindow = infoWindow;
@@ -58,15 +66,7 @@ import {Loader} from "@googlemaps/js-api-loader";
     // Browser doesn't support geolocation
     handleLocationError(false, infoWindow);
     }
-    }
-    // Handle a geolocation error
-    function handleLocationError(browserHasGeolocation, infoWindow) {
-    // Set default location to Sydney, Australia
-    pos = {lat: -33.856, lng: 151.215};
-    map = new google.maps.Map(document.getElementById('map'), {
-    center: pos,
-    zoom: 15
-    });
+    
     // Display an InfoWindow at the map center
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?
@@ -76,4 +76,4 @@ import {Loader} from "@googlemaps/js-api-loader";
     currentInfoWindow = infoWindow;
     
     }
-});*/
+

@@ -1,5 +1,5 @@
 {
     "compilerOptions": {
-      "types": ["googlemaps"]
+      "types": ["googlemaps", "node"],
     }
   }
