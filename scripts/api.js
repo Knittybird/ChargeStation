@@ -1,10 +1,16 @@
+"use strict";
+exports.__esModule = true;
 var express = require('express');
 var app = express();
 var port = parseInt(process.env.PORT, 10) || 5000;
 var request = require('request-promise');
-var base = 'https://api.openchargemap.io/v3/?'; //'https://api.openchargemap.io/v3/';
+var base = 'https://api.openchargemap.io/v3/?';
+//const maps : any = require(__dirname + '\\maps.js'); //'https://api.openchargemap.io/v3/'
 var chargeKey = process.env.OPENCHARGE_KEY;
 var mapKey = process.env.MAP_KEY;
+var googleMapsClient = require('@google/maps').createClient({
+    key: "AIzaSyBcUkvaCCtPiuJKP5UZfpzJsO90MfD7hRE"
+});
 var url = base + 'key=' + chargeKey;
 var temp = "https://api.openchargemap.io/v3/poi/?key=" + chargeKey + "&output=json&countrycode=US&maxresults=20";
 var gurl = "https://maps.googleapis.com/maps/api/js?key=" + mapKey + "&libraries=places&callback=initMap";
@@ -82,6 +88,14 @@ app.post('/search_results', function (req, res) {
     var distance = 'distance=' + req.body.radius;
     var country = 'countrycode=US';
     var distance_u = 'distanceunit=Miles';
+    // Geocode an address.
+    googleMapsClient.geocode({
+        address: '1600 Amphitheatre Parkway, Mountain View, CA'
+    }, function (err, response) {
+        if (!err) {
+            console.log(response.json.results);
+        }
+    });
     //TODO IMPORT GOOGLE MAPS LAT/LONG
     var ret = options([url, distance, country, distance_u]);
     console.log(ret);

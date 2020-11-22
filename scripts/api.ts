@@ -1,10 +1,16 @@
+import {Loader} from "@googlemaps/js-api-loader";
+
 const express : any = require('express');
 const app : any = express();
 const port : number = parseInt(process.env.PORT, 10) || 5000;
 const request : any = require('request-promise');
-const base : string = 'https://api.openchargemap.io/v3/?'; //'https://api.openchargemap.io/v3/';
+const base : string = 'https://api.openchargemap.io/v3/?'; 
+//const maps : any = require(__dirname + '\\maps.js'); //'https://api.openchargemap.io/v3/'
 const chargeKey : string = process.env.OPENCHARGE_KEY
 const mapKey : string = process.env.MAP_KEY
+const googleMapsClient = require('@google/maps').createClient({
+    key: "AIzaSyBcUkvaCCtPiuJKP5UZfpzJsO90MfD7hRE"
+  });
 const url : string = base + 'key=' + chargeKey;
 const temp : string = `https://api.openchargemap.io/v3/poi/?key=${chargeKey}&output=json&countrycode=US&maxresults=20`;
 const gurl : string = `https://maps.googleapis.com/maps/api/js?key=${mapKey}&libraries=places&callback=initMap`
@@ -104,6 +110,16 @@ app.post('/search_results', (req, res) => {
     let distance :string = 'distance=' + req.body.radius;
     let country : string = 'countrycode=US';
     let distance_u : string = 'distanceunit=Miles';
+
+    // Geocode an address.
+    googleMapsClient.geocode({
+    address: '1600 Amphitheatre Parkway, Mountain View, CA'
+    }, function(err : any, response : any) {
+    if (!err) {
+      console.log(response.json.results);
+    }
+    });
+
     //TODO IMPORT GOOGLE MAPS LAT/LONG
     let ret = options([url,distance, country, distance_u]);
     console.log(ret);
