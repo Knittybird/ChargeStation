@@ -1,36 +1,39 @@
-//
-//- Copyright 2019 Google LLC
-//- Licensed under the Apache License, Version 2.0 (the "License");
-//- you may not use this file except in compliance with the License.
-//- You may obtain a copy of the License at
-//- http://www.apache.org/licenses/LICENSE-2.0
-//- Unless required by applicable law or agreed to in writing, software
-//- distributed under the License is distributed on an "AS IS" BASIS,
-//- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//- See the License for the specific language governing permissions and
-//- limitations under the License.
+import {Loader} from "@googlemaps/js-api-loader";
 
-.container#map
-  script.
     /* Note: This example requires that you consent to location sharing when
     * prompted by your browser. If you see the error "Geolocation permission
     * denied.", it means you probably did not give permission for the browser * to locate you. */
     /* TODO: Step 2, Geolocate your user
     * Replace the code from here to the END TODO comment with this code
     * from codelab instructions. */
-    let pos;
-    let map;
-    let bounds;
-    let infoWindow;
-    let currentInfoWindow;
-    let service;
-    let infoPane;
+    let pos : any;
+    let map : any;
+    let bounds : any;
+    let infoWindow : any;
+    let currentInfoWindow : any;
+    let service : any;
+    let infoPane : any;
+
+    const loader = new Loader({
+        apiKey: process.env.MAP_KEY,
+        version: "weekly",
+    });
+
+    loader.load().then(() => {
     function initMap() {
-    // Initialize variables
-    bounds = new google.maps.LatLngBounds();
-    infoWindow = new google.maps.InfoWindow;
-    currentInfoWindow = infoWindow;
-    /* TODO: Step 4A3: Add a generic sidebar */
+
+        map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8,
+          });
+        };
+    });
+
+    /*    // Initialize variables
+        bounds = new google.maps.LatLngBounds();
+        infoWindow = new google.maps.InfoWindow;
+        currentInfoWindow = infoWindow;
+    
     // Try HTML5 geolocation
     if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -47,7 +50,6 @@
     infoWindow.setContent('Location found.');
     infoWindow.open(map);
     map.setCenter(pos);
-    /* TODO: Step 3B2, Call the Places Nearby Search */
     }, () => {
     // Browser supports geolocation, but user has denied permission
     handleLocationError(true, infoWindow);
@@ -74,4 +76,4 @@
     currentInfoWindow = infoWindow;
     
     }
-  script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_0ao-hnjTGFAdtsfRhIKhm_BK2zhKMg&callback=initMap")
+});*/
