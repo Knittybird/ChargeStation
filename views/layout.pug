@@ -1,0 +1,27 @@
+doctype html
+html
+  meta(name="viewport" content="initial-scale=1.0, user-scalable=no")
+  link(rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css')
+  //- link(rel='stylesheet' href='/../views/style.css')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(charset="utf-8")
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  style.
+    /* Always set the map height explicitly to define the size of the div
+    * element that contains the map. */
+    #map {
+    height: 50%;
+    width: 50%;
+    background-color: grey;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+      
+body
+  include includes/header.pug
+  block main
