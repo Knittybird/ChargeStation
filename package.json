@@ -8,7 +8,9 @@
   },
   "main": "api.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node scripts/api.js",
+    "prebuild": "tsc scripts/api.ts",
+    "build": "node scripts/api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ben Davis, Robin Gearn",
