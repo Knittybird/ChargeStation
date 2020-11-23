@@ -4,13 +4,16 @@ var port = parseInt(process.env.PORT, 10) || 5000;
 var request = require('request-promise');
 var base = 'https://api.openchargemap.io/v3/?'; //'https://api.openchargemap.io/v3/';
 var chargeKey = process.env.OPENCHARGE_KEY;
+var mapKey = process.env.MAP_KEY;
 var url = base + 'key=' + chargeKey;
 var temp = "https://api.openchargemap.io/v3/poi/?key=" + chargeKey + "&output=json&countrycode=US&maxresults=20";
-var gurl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_0ao-hnjTGFAdtsfRhIKhm_BK2zhKMg&libraries=places&callback=initMap";
+var gurl = "https://maps.googleapis.com/maps/api/js?key=" + mapKey + "&libraries=places&callback=initMap";
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded());
+// public folder contains static file(s) that will be served
+app.use(express.static('public'));
 function options(options) {
     var output = "";
     var o = "";
@@ -91,3 +94,16 @@ app.post('/search_results', function (req, res) {
 app.listen(port, function () {
     console.log("Server running at http://localhost:" + port);
 });
+// const express = require('express');
+// const path = require('path');
+// const app = express();
+// const port = process.env.PORT || 5000;
+// // specify the URL route and the file structure route
+// app.use('/images', express.static('images'));
+// // send a specific file to be served to the client
+// app.get('/about', (req, res) => {
+// res.sendFile(path.join(__dirname + '/public/about.html'));
+// });
+// app.listen(port, () => {
+// console.log(`Server running at http://localhost:${port}`);
+// }); 
