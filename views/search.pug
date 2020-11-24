@@ -19,4 +19,9 @@ block main
           option(value='15') 15
           option(value='25') 25
           option(value='50') 50
+      .form-group
+        input#lat(name="lat" type="hidden" display="false")
+      .form-group
+        input#lng(name="lng" type="hidden" display="false")
+  
       input.btn.btn-primary(type='submit' value='Go')

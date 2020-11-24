@@ -60,7 +60,7 @@
     // Handle a geolocation error
     function handleLocationError(browserHasGeolocation, infoWindow) {
     // Set default location to Sydney, Australia
-    pos = {lat: -33.856, lng: 151.215};
+    pos = {lat: 45.509854567973534, lng: -122.68072303862307};
     map = new google.maps.Map(document.getElementById('map'), {
     center: pos,
     zoom: 15
@@ -74,5 +74,4 @@
     currentInfoWindow = infoWindow;
     
     }
-  // TODO: Step 3A, Load the Places Library
   script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_0ao-hnjTGFAdtsfRhIKhm_BK2zhKMg&callback=initMap")
