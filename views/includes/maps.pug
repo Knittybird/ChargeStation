@@ -1,4 +1,3 @@
-//
 //- Copyright 2019 Google LLC
 //- Licensed under the Apache License, Version 2.0 (the "License");
 //- you may not use this file except in compliance with the License.
@@ -10,68 +9,70 @@
 //- See the License for the specific language governing permissions and
 //- limitations under the License.
 
-.container#map
-  script.
-    /* Note: This example requires that you consent to location sharing when
-    * prompted by your browser. If you see the error "Geolocation permission
-    * denied.", it means you probably did not give permission for the browser * to locate you. */
-    /* TODO: Step 2, Geolocate your user
-    * Replace the code from here to the END TODO comment with this code
-    * from codelab instructions. */
-    let pos;
-    let map;
-    let bounds;
-    let infoWindow;
-    let currentInfoWindow;
-    let service;
-    let infoPane;
-    function initMap() {
-    // Initialize variables
-    bounds = new google.maps.LatLngBounds();
-    infoWindow = new google.maps.InfoWindow;
-    currentInfoWindow = infoWindow;
+script.
+  /* Note: This example requires that you consent to location sharing when
+  * prompted by your browser. If you see the error "Geolocation permission
+  * denied.", it means you probably did not give permission for the browser * to locate you. */
+  let pos;
+  let map;
+  let bounds;
+  let infoWindow;
+  let currentInfoWindow;
+  let service;
+  let infoPane;
+  function initMap() {
+  // Initialize variables
+  bounds = new google.maps.LatLngBounds();
+  infoWindow = new google.maps.InfoWindow;
+  currentInfoWindow = infoWindow;
 
-    //- Display around current location if true
-    if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(position => {
-    pos = {
-    lat: position.coords.latitude,
-    lng: position.coords.longitude
-    };
-    map = new google.maps.Map(document.getElementById('map'), {
-    center: pos,
-    zoom: 15
-    });
-    bounds.extend(pos);
-    infoWindow.setPosition(pos);
-    infoWindow.setContent('Location found.');
-    infoWindow.open(map);
-    map.setCenter(pos);
-    /* TODO: Step 3B2, Call the Places Nearby Search */
-    }, () => {
-    // Browser supports geolocation, but user has denied permission
-    handleLocationError(true, infoWindow);
-    });
-    } else {
-    // Browser doesn't support geolocation
-    handleLocationError(false, infoWindow);
-    }
-    }
-    // Handle a geolocation error
-    function handleLocationError(browserHasGeolocation, infoWindow) {
-    // Set default location to Sydney, Australia
-    pos = {lat: 45.509854567973534, lng: -122.68072303862307};
-    map = new google.maps.Map(document.getElementById('map'), {
-    center: pos,
-    zoom: 15
-    });
-    // Display an InfoWindow at the map center
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-    'Geolocation permissions denied. Using default location.' :
-    'Error: Your browser doesn\\t support geolocation.');
-    infoWindow.open(map);
-    currentInfoWindow = infoWindow;
-    
-    }
-  script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_0ao-hnjTGFAdtsfRhIKhm_BK2zhKMg&callback=initMap")
+  //- Display around current location if true
+  if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(position => {
+  pos = {
+  lat: position.coords.latitude,
+  lng: position.coords.longitude
+  };
+  map = new google.maps.Map(document.getElementById('map'), {
+  center: pos,
+  zoom: 14,
+  disableDefaultUI: true
+  });
+  bounds.extend(pos);
+  //- infoWindow.setPosition(pos);
+  //- infoWindow.setContent('Location found.');
+  //- infoWindow.open(map);
+  map.setCenter(pos);
+  /* TODO: Step 3B2, Call the Places Nearby Search */
+  }, () => {
+  // Browser supports geolocation, but user has denied permission
+  handleLocationError(true, infoWindow);
+  });
+  } else {
+  // Browser doesn't support geolocation
+  handleLocationError(false, infoWindow);
+  }
+  }
+  // Handle a geolocation error
+  function handleLocationError(browserHasGeolocation, infoWindow) {
+  // Set default location to Sydney, Australia
+  pos = {lat: 45.510, lng: -122.681};
+  map = new google.maps.Map(document.getElementById('map'), {
+  center: pos,
+  zoom: 14,
+  disableDefaultUI: true,
+  scaleControl: true,
+  zoomControl: true,
+  fullscreenControl: true,
+  });
+  // Display an InfoWindow at the map center
+  //- infoWindow.setPosition(pos);
+  //- infoWindow.setContent(browserHasGeolocation ?
+  //- 'Geolocation permissions denied. Using default location.' :
+  //- 'Error: Your browser doesn\\t support geolocation.');
+  //- infoWindow.open(map);
+  //- currentInfoWindow = infoWindow;
+  
+  }
+
+script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_0ao-hnjTGFAdtsfRhIKhm_BK2zhKMg&callback=initMap")
