@@ -1,4 +1,18 @@
 extends layout.pug
 block main
-  h1 Where&apos;s A Charger?
-  include includes/maps.pug
+  h2.text-center= Title
+
+  // cards for different features
+  
+  .container
+    .row.justify-content-center
+      .card.col-md-4
+        h5.card-title Find a Charging Station
+        p this is a discription of this feature I need to put more space in here to see what happens
+        a.btn.btn-primary.btn-sm(href='search') Search
+
+    .row
+      //- .card.mt-5(style={width: '75em', height: '25em'})
+      .card.mt-3(style={width: '50em', height: '10em'})
+        #map
+          include includes/maps.pug
