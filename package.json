@@ -9,7 +9,7 @@
   "main": "api.js",
   "scripts": {
     "start": "node scripts/api.js",
-    "prebuild": "tsc scripts/api.ts && tsc scripts/maps.ts",
+    "prebuild": "tsc scripts/*.ts",
     "build": "node scripts/api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
