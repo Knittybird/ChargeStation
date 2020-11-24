@@ -20,6 +20,8 @@ app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, 'maps.js')));
+// public folder contains static file(s) that will be served
+app.use(express.static('public'));
 function options(options) {
     var output = "";
     var o = "";
@@ -103,10 +105,7 @@ app.post('/search_results', function (req, res) {
             var lng = "longitude=" + response.json.results[0].geometry.location['lng'];
             var ret = options([url, verbose, output, incl_comm, max_results, compact, lat, lng, distance, distance_u]);
             console.log(ret);
-            if (ret === "https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&verbose=false&output=json&includecomments=true&maxresults=10&compact=true&latitude=45.5051064&longitude=-122.6750261&distance=10&distanceunit=Miles")
-                console.log("YAY");
-            else
-                console.log("NOPE");
+            //if (ret === "https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&verbose=false&output=json&includecomments=true&maxresults=10&compact=true&latitude=45.5051064&longitude=-122.6750261&distance=10&distanceunit=Miles")
             request(ret, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     var json_body = JSON.parse(body);

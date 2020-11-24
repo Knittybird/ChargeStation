@@ -23,6 +23,9 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, 'maps.js')));
 
+// public folder contains static file(s) that will be served
+app.use(express.static('public'))
+
 function options(options : string []) : string {
 
     let output : string =""
