@@ -99,5 +99,5 @@ const chargers = [
 const renderPug = data => pug.renderFile('views/results_list.pug', data);
 
 test('It should render pug correctly', () => {
-  expect(renderPug(chargers)).toMatchSnapshot();
+  expect(renderPug({chargers})).toMatchSnapshot();
 });
