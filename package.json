@@ -9,9 +9,15 @@
   "main": "api.js",
   "scripts": {
     "start": "node scripts/api.js",
-    "prebuild": "tsc scripts/*.ts",
+    "prebuild": "tsc",
     "build": "node scripts/api.js",
     "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "author": "Ben Davis, Robin Gearn",
   "license": "MIT",
@@ -21,17 +27,18 @@
     "@types/googlemaps": "^3.40.3",
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.9",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jest": "^26.6.3",
     "nodemon": "^2.0.6",
     "request": "^2.88.2",
-    "request-promise": "^4.2.6"
+    "request-promise": "^4.2.6",
+    "supertest": "^6.0.1"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.11.1",
     "@types/express": "^4.17.9",
     "@types/request": "^2.48.5",
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pug": "^3.0.0",
     "request": "^2.88.2",

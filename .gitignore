@@ -1,7 +1,7 @@
 node_modules/
 .vscode/
 gmaps/
-scripts/*.js
+dist/
 .env
 dist/
 .cache/
