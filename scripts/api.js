@@ -1,6 +1,5 @@
 "use strict";
 exports.__esModule = true;
-var path = require("path");
 require('dotenv').config();
 var express = require('express');
 var app = express();
@@ -17,22 +16,10 @@ app.set('views', __dirname + '/../views');
 app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.static(path.join(__dirname, '\\..\\public')));
+//app.use(express.static(path.join(__dirname, '\\..\\public')));
 // public folder contains static file(s) that will be served
-//app.use(express.static('public'))
+app.use(express.static('public'));
 var results = [];
-//Figure out charger info/route info
-request(temp, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-        var json_body = JSON.parse(body);
-        return json_body;
-    }
-});
-var gmaps = request(gurl, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-        return body;
-    }
-});
 var pos;
 var map;
 function initMap() {
@@ -76,16 +63,14 @@ app.get('/search', function (req, res) {
 app.post('/search_results', function (req, res) {
     var output = "output=json";
     var distance = 'distance=' + req.body.radius;
-    var country = 'countrycode=US';
     var distance_u = 'distanceunit=Miles';
     var compact = "compact=true";
     var verbose = "verbose=false";
     var incl_comm = "includecomments=true";
     var max_results = "maxresults=10";
     var address = req.body.location;
-    var q = require('../public/api_link.js');
-    //console.log(q.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u))
-    q.addr(address, url, verbose, output, incl_comm, max_results, compact, distance, distance_u);
+    var api = require('../public/api_link.js');
+    api.addr(address, url, verbose, output, incl_comm, max_results, compact, distance, distance_u);
     res.render('search_results', {
         Title: 'Results'
     });
@@ -98,16 +83,3 @@ app.post('/directions_results', function (req, res) {
 app.listen(port, function () {
     console.log("Server running at http://localhost:" + port);
 });
-// const express = require('express');
-// const path = require('path');
-// const app = express();
-// const port = process.env.PORT || 5000;
-// // specify the URL route and the file structure route
-// app.use('/images', express.static('images'));
-// // send a specific file to be served to the client
-// app.get('/about', (req, res) => {
-// res.sendFile(path.join(__dirname + '/public/about.html'));
-// });
-// app.listen(port, () => {
-// console.log(`Server running at http://localhost:${port}`);
-// }); 

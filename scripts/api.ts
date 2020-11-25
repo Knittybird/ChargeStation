@@ -9,48 +9,17 @@ const base : string = 'https://api.openchargemap.io/v3/poi/?';
 const chargeKey : string = process.env.OPENCHARGE_KEY
 const mapKey : string = process.env.MAP_KEY
 const url : string = `${base}key=${chargeKey}`; //+ chargeKey;
-//const temp : string = `https://api.openchargemap.io/v3/poi/?key=${chargeKey}&output=json&countrycode=US&maxresults=10`;
-const temp : string = `https://api.openchargemap.io/v3/poi/?key=${chargeKey}&verbose=false&output=json&includecomments=true&maxresults=10&compact=true&latitude=45.5051064&longitude=-122.6750261&distance=10&distanceunit=Mile`//https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&output=json&maxresults=10&longitude=45.5051064&latitude=-122.6750261&countrycode=US&distance=1";
-const gurl : string = `https://maps.googleapis.com/maps/api/js?key=${mapKey}&libraries=places&callback=initMap`
+//const temp : string = `https://api.openchargemap.io/v3/poi/?key=${chargeKey}&verbose=false&output=json&includecomments=true&maxresults=10&compact=true&latitude=45.5051064&longitude=-122.6750261&distance=10&distanceunit=Mile`//https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&output=json&maxresults=10&longitude=45.5051064&latitude=-122.6750261&countrycode=US&distance=1";
+//const gurl : string = `https://maps.googleapis.com/maps/api/js?key=${mapKey}&libraries=places&callback=initMap`
 
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'pug');
 
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.static(path.join(__dirname, '\\..\\public')));
 
 // public folder contains static file(s) that will be served
-//app.use(express.static('public'))
-
-
-
-let results : Object[] = [];
-
-//Figure out charger info/route info
-request(temp, function (error : number, response : any, body : any) : Object{
-    if (!error && response.statusCode == 200) {
-        let json_body : Object = JSON.parse(body);
-        return json_body;
-    }
-});
-
-let gmaps = request(gurl, function (error : number, response : any, body : any) : void{
-    if (!error && response.statusCode == 200) {
-        return body;
-    }
-});
-
-let pos : object;
-let map : any;
-function initMap() {
-      // Set the default location and initialize all variables
-      pos = { lat: -33.857, lng: 151.213 };
-      map = new gmaps.google.maps.Map(document.getElementById('map'), {
-        center: pos,
-        zoom: 15
-    });
-}
+app.use(express.static(path.join(__dirname, '\\..\\public')));
 
 app.get('/', (req, res) => {
 
@@ -94,16 +63,14 @@ app.get('/search', (req, res) => {
 app.post('/search_results', (req, res) => {
     let output : string = "output=json";
     let distance : string= 'distance=' + req.body.radius;
-    let country  : string= 'countrycode=US';
     let distance_u :string = 'distanceunit=Miles';
     let compact :string = "compact=true";
     let verbose :string = "verbose=false";
     let incl_comm :string = "includecomments=true";
     let max_results:string  = "maxresults=10"
     let address : any= req.body.location
-    let q = require('../public/api_link.js');
-    //console.log(q.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u))
-    q.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u)
+    let api = require('../public/api_link.js');
+    api.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u)
     res.render('search_results', {
         Title : 'Results'
     });
@@ -121,23 +88,3 @@ app.post('/directions_results', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
-   
-// const express = require('express');
-// const path = require('path');
-
-// const app = express();
-// const port = process.env.PORT || 5000;
-
-
-
-// // specify the URL route and the file structure route
-// app.use('/images', express.static('images'));
-
-// // send a specific file to be served to the client
-// app.get('/about', (req, res) => {
-// res.sendFile(path.join(__dirname + '/public/about.html'));
-// });
-
-// app.listen(port, () => {
-// console.log(`Server running at http://localhost:${port}`);
-// }); 
