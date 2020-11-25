@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node dist/scripts/api.js",
     "prebuild": "tsc",
-    "build": "node dist/scripts/api.js",
+    "build": "node dist/scripts/api.ts",
     "test": "jest"
   },
   "jest": {
