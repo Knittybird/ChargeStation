@@ -3,3 +3,5 @@ node_modules/
 gmaps/
 scripts/*.js
 .env
+dist/
+.cache/

@@ -26,7 +26,16 @@ script.
   infoWindow = new google.maps.InfoWindow;
   currentInfoWindow = infoWindow;
 
+  //- Display location passed if ste
+  //- if (#{latitude}) {
+  //- let lat = #{latitude}
+  //- let lng = #{longitude}
+  //- pos = {
+  //- lat: lat;
+  //- lng: lng;
+  //- }
   //- Display around current location if true
+  //- else if (navigator.geolocation) {
   if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(position => {
   pos = {

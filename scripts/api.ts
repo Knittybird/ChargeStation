@@ -75,7 +75,6 @@ function initMap() {
 app.get('/', (req, res) => {
 
     res.render('index', {
-        Title : 'Home'
     });
 });
 
@@ -118,7 +117,7 @@ app.post('/search_results', (req, res) => {
     let distance :string = 'distance=' + req.body.radius;
     let country : string = 'countrycode=US';
     let distance_u : string = 'distanceunit=Miles';
-    let compact : string = "compact=true";
+    let compact : string = "compact=false";
     let verbose : string = "verbose=false";
     let incl_comm : string = "includecomments=true";
     let max_results : string = "maxresults=10"
@@ -147,7 +146,8 @@ app.post('/search_results', (req, res) => {
     });
 
     res.render('directions_results', {
-        Title : 'Results'
+        Title : 'Results',
+        charges: 
     });
 });
 

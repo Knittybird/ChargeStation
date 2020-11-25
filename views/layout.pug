@@ -6,10 +6,16 @@ html
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(charset="utf-8")
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  title Where's a Charger
       
 body
   include includes/header.pug
   block main
+
+  script.
+    console.log(window.location.href);
+  
+  //- script(src='foo.js')
 
   script(
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"
