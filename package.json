@@ -11,7 +11,13 @@
     "start": "node scripts/api.js",
     "prebuild": "tsc scripts/*.ts",
     "build": "node scripts/api.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "author": "Ben Davis, Robin Gearn",
   "license": "MIT",
@@ -21,10 +27,12 @@
     "@types/node": "^14.14.9",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.6",
     "pug": "^3.0.0",
     "request": "^2.88.2",
-    "request-promise": "^4.2.6"
+    "request-promise": "^4.2.6",
+    "supertest": "^6.0.1"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.11.1",
@@ -33,4 +41,5 @@
     "express": "^4.17.1",
     "request": "^2.88.2"
   }
+  
 }
