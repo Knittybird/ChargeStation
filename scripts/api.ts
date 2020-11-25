@@ -1,7 +1,6 @@
 import path = require("path");
 require('dotenv').config();
 
-
 const express : any = require('express');
 const app : any = express();
 const port : number = parseInt(process.env.PORT, 10) || 5000;
@@ -9,11 +8,6 @@ const request : any = require('request-promise');
 const base : string = 'https://api.openchargemap.io/v3/poi/?'; 
 const chargeKey : string = process.env.OPENCHARGE_KEY
 const mapKey : string = process.env.MAP_KEY
-
-const googleMapsClient = require('@google/maps').createClient({
-    key:mapKey
-});
-
 const url : string = `${base}key=${chargeKey}`; //+ chargeKey;
 //const temp : string = `https://api.openchargemap.io/v3/poi/?key=${chargeKey}&output=json&countrycode=US&maxresults=10`;
 const temp : string = `https://api.openchargemap.io/v3/poi/?key=${chargeKey}&verbose=false&output=json&includecomments=true&maxresults=10&compact=true&latitude=45.5051064&longitude=-122.6750261&distance=10&distanceunit=Mile`//https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&output=json&maxresults=10&longitude=45.5051064&latitude=-122.6750261&countrycode=US&distance=1";
@@ -24,24 +18,12 @@ app.set('view engine', 'pug');
 
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.static(path.join(__dirname, 'maps.js')));
+app.use(express.static(path.join(__dirname, '\\..\\public')));
 
 // public folder contains static file(s) that will be served
-app.use(express.static('public'))
+//app.use(express.static('public'))
 
-function options(options : string []) : string {
 
-    let output : string =""
-    let o : string = ""
-    for(o in options)
-        if (output == "")
-            output = options[o];
-        else
-            output += "&" + options[o];
-
-    return output;
-
-}
 
 let results : Object[] = [];
 
@@ -49,8 +31,6 @@ let results : Object[] = [];
 request(temp, function (error : number, response : any, body : any) : Object{
     if (!error && response.statusCode == 200) {
         let json_body : Object = JSON.parse(body);
-        //console.log(json_body)
-
         return json_body;
     }
 });
@@ -112,41 +92,26 @@ app.get('/search', (req, res) => {
 });
 
 app.post('/search_results', (req, res) => {
-
-    console.log(process.env.OPENCHARGE_KEY);
     let output : string = "output=json";
-    let distance :string = 'distance=' + req.body.radius;
-    let country : string = 'countrycode=US';
-    let distance_u : string = 'distanceunit=Miles';
-    let compact : string = "compact=true";
-    let verbose : string = "verbose=false";
-    let incl_comm : string = "includecomments=true";
-    let max_results : string = "maxresults=10"
-
-    //let out_url : string = url + output;
-    let out_url : string = googleMapsClient.geocode({
-    address: req.body.location
-    }, function(err : any, response : any) : void {
-    if (!err) {
-        let lat : string = "latitude="+response.json.results[0].geometry.location['lat'];
-        let lng : string = "longitude="+response.json.results[0].geometry.location['lng'];
-        let ret = options([url,verbose, output, incl_comm, max_results, compact, lat, lng,distance, distance_u]);
-
-        console.log(ret);
-        //if (ret === "https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&verbose=false&output=json&includecomments=true&maxresults=10&compact=true&latitude=45.5051064&longitude=-122.6750261&distance=10&distanceunit=Miles")
-
-        request(ret, function (error : number, response : any, body : any) : void{
-            if (!error && response.statusCode == 200) {
-                let json_body : Object = JSON.parse(body);
-                console.log(json_body)
-        
-                //return json_body;
-            }
-        });
-    }
+    let distance : string= 'distance=' + req.body.radius;
+    let country  : string= 'countrycode=US';
+    let distance_u :string = 'distanceunit=Miles';
+    let compact :string = "compact=true";
+    let verbose :string = "verbose=false";
+    let incl_comm :string = "includecomments=true";
+    let max_results:string  = "maxresults=10"
+    let address : any= req.body.location
+    let q = require('../public/api_link.js');
+    //console.log(q.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u))
+    q.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u)
+    res.render('search_results', {
+        Title : 'Results'
     });
+});
 
-    res.render('directions_results', {
+app.post('/directions_results', (req, res) => {
+
+    res.render('search_results', {
         Title : 'Results'
     });
 });
