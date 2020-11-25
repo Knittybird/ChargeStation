@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mapKey  = process.env.MAP_KEY
 const request = require('request-promise');
 const googleMapsClient = require('@google/maps').createClient({
@@ -22,6 +23,7 @@ const googleMapsClient = require('@google/maps').createClient({
     }
     module.exports = {
     addr : function addr_to_latlng(addr : any, url : string, verbose : string, output : string, incl_comm : string, max_results : string, compact : string, distance : string, distance_u : string) {
+    let results : object[] = [];
     googleMapsClient.geocode({
     address: addr
     }, function(err : any, response : any ) {
@@ -35,6 +37,12 @@ const googleMapsClient = require('@google/maps').createClient({
         request(ret, function (error : any, response : any, body : any) : any{
             if (!error && response.statusCode == 200) {
                 let json_body = JSON.parse(body);
+                let jb :any = "";
+
+                for(jb in json_body)
+                {
+                    results.push({"addr" : json_body[jb].AddressInfo['AddressLine1']})
+                }
                 console.log(json_body)
                 
                 //we'll need to return an object with the relevant data
