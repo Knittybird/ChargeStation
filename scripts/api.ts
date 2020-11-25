@@ -12,14 +12,14 @@ const url : string = `${base}key=${chargeKey}`; //+ chargeKey;
 //const temp : string = `https://api.openchargemap.io/v3/poi/?key=${chargeKey}&verbose=false&output=json&includecomments=true&maxresults=10&compact=true&latitude=45.5051064&longitude=-122.6750261&distance=10&distanceunit=Mile`//https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&output=json&maxresults=10&longitude=45.5051064&latitude=-122.6750261&countrycode=US&distance=1";
 //const gurl : string = `https://maps.googleapis.com/maps/api/js?key=${mapKey}&libraries=places&callback=initMap`
 
-app.set('views', __dirname + '/../views');
+// app.set('views', '/views');
 app.set('view engine', 'pug');
 
 app.use(express.json());
 app.use(express.urlencoded());
 
 // public folder contains static file(s) that will be served
-app.use(express.static(path.join(__dirname, '\\..\\public')));
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
 
