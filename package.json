@@ -8,9 +8,9 @@
   },
   "main": "api.js",
   "scripts": {
-    "start": "node scripts/api.js",
+    "start": "node dist/scripts/api.js",
     "prebuild": "tsc",
-    "build": "node scripts/api.js",
+    "build": "node dist/scripts/api.js",
     "test": "jest"
   },
   "jest": {
