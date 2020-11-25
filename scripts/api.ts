@@ -24,7 +24,6 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
 
     res.render('index', {
-        Title : 'Home'
     });
 });
 
@@ -64,7 +63,7 @@ app.post('/search_results', (req, res) => {
     let output : string = "output=json";
     let distance : string= 'distance=' + req.body.radius;
     let distance_u :string = 'distanceunit=Miles';
-    let compact :string = "compact=true";
+    let compact :string = "compact=false";
     let verbose :string = "verbose=false";
     let incl_comm :string = "includecomments=true";
     let max_results:string  = "maxresults=10"
