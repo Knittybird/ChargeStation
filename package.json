@@ -9,7 +9,7 @@
   "main": "api.js",
   "scripts": {
     "start": "node scripts/api.js",
-    "prebuild": "tsc scripts/*.ts && tsc public/*.ts",
+    "prebuild": "tsc",
     "build": "node scripts/api.js",
     "test": "jest"
   },
