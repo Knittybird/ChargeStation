@@ -1,4 +1,6 @@
 import path = require("path");
+require('dotenv').config();
+
 
 const express : any = require('express');
 const app : any = express();
@@ -7,13 +9,14 @@ const request : any = require('request-promise');
 const base : string = 'https://api.openchargemap.io/v3/poi/?'; 
 const chargeKey : string = process.env.OPENCHARGE_KEY
 const mapKey : string = process.env.MAP_KEY
+
 const googleMapsClient = require('@google/maps').createClient({
-    key:"AIzaSyBcUkvaCCtPiuJKP5UZfpzJsO90MfD7hRE"
+    key:mapKey
 });
 
-const url : string = `${base}key=8bc4f8db-272f-458b-82f7-c052a5c53c9a`; //+ chargeKey;
+const url : string = `${base}key=${chargeKey}`; //+ chargeKey;
 //const temp : string = `https://api.openchargemap.io/v3/poi/?key=${chargeKey}&output=json&countrycode=US&maxresults=10`;
-const temp : string = "https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&verbose=false&output=json&includecomments=true&maxresults=10&compact=true&latitude=45.5051064&longitude=-122.6750261&distance=10&distanceunit=Mile"//https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&output=json&maxresults=10&longitude=45.5051064&latitude=-122.6750261&countrycode=US&distance=1";
+const temp : string = `https://api.openchargemap.io/v3/poi/?key=${chargeKey}&verbose=false&output=json&includecomments=true&maxresults=10&compact=true&latitude=45.5051064&longitude=-122.6750261&distance=10&distanceunit=Mile`//https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&output=json&maxresults=10&longitude=45.5051064&latitude=-122.6750261&countrycode=US&distance=1";
 const gurl : string = `https://maps.googleapis.com/maps/api/js?key=${mapKey}&libraries=places&callback=initMap`
 
 app.set('views', __dirname + '/../views');
