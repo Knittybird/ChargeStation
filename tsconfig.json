@@ -1,5 +1,10 @@
 {
     "compilerOptions": {
       "types": ["googlemaps", "node"],
-    }
+      "outDir": "dist"
+    },
+    "include": [
+      "public/*",
+      "scripts/*"
+    ]
   }
