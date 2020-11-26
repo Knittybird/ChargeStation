@@ -47,8 +47,8 @@ block main
             input.form-check.mr-2#isPublic(type="checkbox", name="isPublic", checked)
             label(for='isPublic') Public Chargers Only
           .form-group.col-sm-3
-            label(for='radius') Radius(mi):
-            select(name="radius")#radius.form-control
+            label.mr-1(for='radius') Radius(mi):
+            select.form-control.form-control-sm(name="radius")#radius.form-control
               option(value='1') 1
               option(value='5') 5
               option(value='10') 10
