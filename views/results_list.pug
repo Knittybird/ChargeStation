@@ -2,17 +2,24 @@ extends layout.pug
 block main
   .container
     h1 Results
-    #map
-    table#chargers
+
+    table.table-responsive.table-hover#chargers
       thead
         tr
           th Name
           th Address
-          th Lattitude, Longitude
+          th
+          th.d-none Lattitude, Longitude
       tbody
         each charger in chargers
           tr
+            //- a(href-"/details")
             td= charger.address.title
             td #{charger.address.addressLine} #{charger.address.town}, #{charger.address.state} #{charger.address.postalCode}
-            td #{charger.pos.lat}, #{charger.pos.lng}
+            td.d-none #{charger.pos.lat}, #{charger.pos.lng}
+
+    //- .row.justify-content-center
+    //-   //- .card.mt-5(style={width: '75em', height: '25em'})
+    //-   .card(style={width: '50em', height: '30em'})
+    //-     #map
       
