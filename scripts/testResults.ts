@@ -8,7 +8,7 @@ const port : number = parseInt(process.env.PORT, 10) || 5000;
 app.set('view engine', 'pug');
 
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 
 // public folder contains static file(s) that will be served
 app.use(express.static('public'));
