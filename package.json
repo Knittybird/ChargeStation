@@ -12,7 +12,7 @@
     "prebuild": "tsc",
     "build": "node dist/scripts/api.ts",
     "test": "jest",
-    "snap": "jest --updateSnapshots"
+    "snap": "jest --updateSnapshot"
   },
   "jest": {
     "testEnvironment": "node",
