@@ -3,27 +3,34 @@ block main
   .container
     form(action='/search_results' method='post')
       h1 Find A Charger
-      .form-group
-        label(for='location') Location*
-        input#location.form-control(type='text' name="location" required)
+      .form-group.form-row
+        // label(for='location') Location*
+        input.col-md-8#location.form-control(type='text' name="location" placeholder="Location" required)
       // ChargerTypes:ID 
         1 = low und 2kW
         2 = med over 2kW
         3 = high over 40kW
-      .form-group
-        label(for='chargerType') Charger Type:
-        select(name="chargerType" multiple)#chargerType.form-control
-          option(value='1') Level 1
-          option(value='2') Level 2
-          option(value='3') Level 3
-      .form-group
-        label(for='connectionType') Connection Type
-        select(name="conectionType" multiple)#conectionType.form-control
-          option(value='7') (type 1) J1772
-          option(value='32') (Type 1) CCS
-          option(value='33') (Type 2) CCS
-          option(value='2') CHAdeMO
-          option(value='30') Tesla
+      .form-row
+        .card.col-md-3.mr-3
+          h6 Charger Types
+          .form-inline.mb-2
+            input.form-check.mr-2#level1(type="checkbox" name="chargerType" value="1")
+            label(for='level1') Level 1 Charger
+          .form-inline.mb-2
+            input.form-check.mr-2#level2(type="checkbox" name="chargerType" value="2")
+            label(for='level2') Level 2 Charger
+          .form-inline.mb-2
+            input.form-check.mr-2#level3(type="checkbox" name="chargerType" value="3")
+            label(for='level3') Level 2 Charger
+        .card.col-md-4
+          .form-group
+            label(for='connectionType') Connection Type
+            select(name="conectionType" multiple)#conectionType.form-control
+              option(value='7') (type 1) J1772
+              option(value='32') (Type 1) CCS
+              option(value='33') (Type 2) CCS
+              option(value='2') CHAdeMO
+              option(value='30') Tesla
       .form-check.form-inline
         input.form-check#isPublic(type="checkbox", name="isPublic", checked)
         label(for='isPublic') Public Chargers Only
