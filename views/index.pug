@@ -4,15 +4,16 @@ block main
 
   // cards for different features
 
-  .container
-    .row.my-3.justify-content-center
-      .card.col-md-4.justify-content-center
-        h5.card-title Find a Charging Station
+  .container.mt-5
+    .row.my-4.justify-content-center
+      .card.col-md-3.text-center
+        h4.card-title Find a Charging Station
         p this is a discription of this feature I need to put more space in here to see what happens
-        a.btn.btn-primary.btn-sm.mb-1.col-4(href='search') Search
+        .row.justify-content-center
+          a.btn.btn-primary.btn-sm.mb-1.col-4(href='search') Search
 
-    .row
+    .row.justify-content-center
       //- .card.mt-5(style={width: '75em', height: '25em'})
-      .card(style={width: '50em', height: '10em'})
+      .card(style={width: '50em', height: '30em'})
         #map
           include includes/maps.pug

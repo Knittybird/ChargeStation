@@ -4,9 +4,15 @@ block main
     h1 Results
     #map
     table#chargers
-      tr
-        th These
-        th Are
-        th Some
-        th Chargers
+      thead
+        tr
+          th Name
+          th Address
+          th Lattitude, Longitude
+      tbody
+        each charger in chargers
+          tr
+            td= charger.address.title
+            td #{charger.address.addressLine} #{charger.address.town}, #{charger.address.state} #{charger.address.postalCode}
+            td #{charger.pos.lat}, #{charger.pos.lng}
       
