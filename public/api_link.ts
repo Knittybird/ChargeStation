@@ -5,7 +5,6 @@ const googleMapsClient = require('@google/maps').createClient({
     key:mapKey
 });
 
-//console.log(process.env.OPENCHARGE_KEY);
     
 
     function options(options : string[]) : string{

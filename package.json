@@ -11,7 +11,8 @@
     "start": "node dist/scripts/api.js",
     "prebuild": "tsc",
     "build": "node dist/scripts/api.ts",
-    "test": "jest"
+    "test": "jest",
+    "snap": "jest --updateSnapshot"
   },
   "jest": {
     "testEnvironment": "node",
