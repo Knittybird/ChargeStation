@@ -13,13 +13,9 @@ block main
       tbody
         each charger in chargers
           tr
-            //- a(href-"/details")
+            // make the whole line clickable to bring you to detail page
             td= charger.address.title
             td #{charger.address.addressLine} #{charger.address.town}, #{charger.address.state} #{charger.address.postalCode}
+            td 
+              a(href="/detail/" + charger.id) #{charger.id}
             td.d-none #{charger.pos.lat}, #{charger.pos.lng}
-
-    //- .row.justify-content-center
-    //-   //- .card.mt-5(style={width: '75em', height: '25em'})
-    //-   .card(style={width: '50em', height: '30em'})
-    //-     #map
-      
