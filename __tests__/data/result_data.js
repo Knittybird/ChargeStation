@@ -1,7 +1,7 @@
 
 export const chargers = [
   {
-    id: "29642",
+    id: "29296",
     address: {
       addressLine: "222 SW Harrison Street",
       title: "Harrison Tower",
@@ -15,7 +15,7 @@ export const chargers = [
     }
   },
   {
-    id: "144759",
+    id: "144407",
     address: {
       addressLine: "100 SW Market St",
       title: "Park Square",

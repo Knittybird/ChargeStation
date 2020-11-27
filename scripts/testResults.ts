@@ -1,22 +1,33 @@
+// This file is for rendering result pages
+// to work on styling
+
 import path = require("path");
+import {fetchCharge} from "../public/details"
 require('dotenv').config();
 
+// set up url for opencharge
+const base : string = 'https://api.openchargemap.io/v3/poi/?'; 
+const chargeKey : string = process.env.OPENCHARGE_KEY
+const url : string = `${base}key=${chargeKey}`; //+ chargeKey;
+
+// set up express and set port
 const express : any = require('express');
 const app : any = express();
-const port : number = parseInt(process.env.PORT, 10) || 5000;
-
-app.set('view engine', 'pug');
-
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+const port : number = parseInt(process.env.PORT, 10) || 5000;
+
+// using pug temlates
+app.set('view engine', 'pug');
 
 // public folder contains static file(s) that will be served
 app.use(express.static('public'));
 
-
+// canned test data. had problems importing it
 const chargers = [
   {
-    id: "29642",
+    id: "29296",
     address: {
       addressLine: "222 SW Harrison Street",
       title: "Harrison Tower",
@@ -30,7 +41,7 @@ const chargers = [
     }
   },
   {
-    id: "144759",
+    id: "144407",
     address: {
       addressLine: "100 SW Market St",
       title: "Park Square",
@@ -72,7 +83,7 @@ const chargers = [
     },
   },
   {
-    id: "3428",
+    id: "3069",
     address: {
       addressLine: "1945 SE Water Ave",
       title: "Oregon Museum of Science and Industry (OMSI)",
@@ -116,6 +127,7 @@ const chargers = [
 ]
 
 
+// render result-list page
 app.get('/', (req, res) => {
 
     res.render('results_list', { 
@@ -124,11 +136,13 @@ app.get('/', (req, res) => {
 });
 
 
+// render detail page
 app.get('/detail/:id', (req, res) =>{
-    
+    console.log(req.params);
+    fetchCharge(url, req.params.id)
     res.render('detail', {
         Title : 'Test result',
-        id: req.body.id
+        id: req.params.id
     });
 });
 
