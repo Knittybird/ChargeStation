@@ -8,8 +8,11 @@ type Connector = [number, number]
 export async function fetchCharge (url: string, id: string): Promise<any> {
   try {
     console.log("in fetchDetail")
+    let apicall = [url, `chargepointid=${id}`, `maxresults=10`, `verbose=false`].join("&");
+    console.log(apicall );
 
-    const results = await fetch(url + "&chargepointid:" + id );
+    const results = await fetch(apicall );
+    console.log('after api call');
     const data: any  = await results.json();
     const crg: any = data[0];
     // this is an array of connection [typeID, level]
