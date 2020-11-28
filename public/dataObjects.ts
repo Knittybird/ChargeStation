@@ -1,6 +1,7 @@
 /* defines objects to pass data from backend to frontend  */
 
 export interface Charger{
+  id: string;
   address: {
     addressLine: string;
     title: string;
@@ -9,7 +10,8 @@ export interface Charger{
     postalCode: string;
   },
   pos: {
-    lat: string
-    lng: string
+    lat?: string;
+    lng?: string;
   }
+  
 }
