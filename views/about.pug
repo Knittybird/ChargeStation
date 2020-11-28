@@ -2,12 +2,17 @@ extends layout.pug
 block main
   .container
     #title
-      h1 About
+      h1 Welcome to Open Charge!
     section
       h2 Usage
       p
-        | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos perferendis voluptas voluptate dolorum cupiditate ullam veniam natus quis placeat explicabo? Tempora odit architecto provident quod aspernatur earum excepturi voluptates mollitia?Provident eligendi, illo aliquid ut saepe perspiciatis ab deleniti doloremque eaque sed magni, fuga dicta delectus dignissimos iure ipsa ea placeat nobis similique vero fugit architecto facere? Numquam, repellendus cupiditate.
+        | This site is for all your electric charging needs.  Here you can search for chargers in your area and filter them by type.  We always recommend to search for public chargers since they are free, but you can search for a mix of public and private with the search tool. 
+
     section
       h2 Charger Types
       #charger_types
-        | Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste neque libero molestias, alias quidem sed animi, illo quibusdam nihil suscipit placeat architecto delectus eligendi perferendis eaque ipsum soluta voluptatibus minus!Dignissimos illum pariatur magnam quis nobis assumenda, quam mollitia, laboriosam consequuntur ratione ipsum voluptatibus fuga. Sed vitae deleniti nisi quas eaque perferendis sit, ipsam corrupti sint dicta cumque eligendi unde!
+        img(src="https://wallbox.com/media/cms/copper/graphics-FAQs-04.jpg" alt="Table of Charger Types" height="350" width="100%")
+      
+    section
+      h2 Features
+      include includes/cards.pug

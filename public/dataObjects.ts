@@ -1,6 +1,7 @@
 /* defines objects to pass data from backend to frontend  */
 
-export interface Charger{
+//module.exports = {
+  export interface Charger {
   address: {
     addressLine: string;
     title: string;
@@ -13,3 +14,4 @@ export interface Charger{
     lng: string
   }
 }
+//}
