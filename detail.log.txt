@@ -1,0 +1,146 @@
+[33m[nodemon] 2.0.6[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `node dist/scripts/testResults.js`[39m
+Server running at http://localhost:5000
+{ id: '3069' }
+in fetchDetail
+[
+  {
+    DataProvider: {
+      WebsiteURL: 'http://www.afdc.energy.gov/',
+      DataProviderStatusType: [Object],
+      IsRestrictedEdit: false,
+      IsOpenDataLicensed: true,
+      IsApprovedImport: true,
+      License: 'This data is provided by the National Renewable Energy Laboratory ("NREL"), which is operated by the Alliance for Sustainable Energy, LLC ("Alliance"), for the U.S. Department of Energy ("DOE"), and may be used for any purpose whatsoever.',
+      DateLastImported: '2020-09-16T05:35:30.773Z',
+      ID: 2,
+      Title: 'afdc.energy.gov'
+    },
+    UsageType: { ID: 1, Title: 'Public' },
+    StatusType: { IsUserSelectable: true, ID: 0, Title: 'Unknown' },
+    SubmissionStatus: { IsLive: true, ID: 100, Title: 'Imported and Published' },
+    IsRecentlyVerified: false,
+    ID: 3069,
+    UUID: 'B62710EF-DCF9-446F-A911-8E91DAD625DE',
+    DataProviderID: 2,
+    DataProvidersReference: '37651',
+    UsageTypeID: 1,
+    AddressInfo: {
+      ID: 3070,
+      Title: 'Oregon Museum of Science and Industry (OMSI) - North Parking Lot',
+      AddressLine1: '1945 SE Water Ave',
+      Town: 'Portland',
+      StateOrProvince: 'OR',
+      Postcode: '97214',
+      CountryID: 2,
+      Country: [Object],
+      Latitude: 45.509326,
+      Longitude: -122.666392,
+      ContactTelephone1: '800-955-6674',
+      AccessComments: '24 hours daily',
+      RelatedURL: '',
+      DistanceUnit: 0
+    },
+    Connections: [ [Object] ],
+    DateLastConfirmed: '2011-01-31T00:00:00Z',
+    StatusTypeID: 0,
+    DateLastStatusUpdate: '2020-06-26T03:09:00Z',
+    DataQualityLevel: 1,
+    DateCreated: '2011-01-31T00:00:00Z',
+    SubmissionStatusTypeID: 100
+  }
+]
+{
+  id: 3069,
+  address: {
+    addressLine: '1945 SE Water Ave',
+    title: 'Oregon Museum of Science and Industry (OMSI) - North Parking Lot',
+    town: 'Portland',
+    state: 'OR',
+    postalCode: '97214'
+  },
+  connectionType: [ { typeId: 1, levelId: 2 } ],
+  usage: 1
+}
+{ id: '79829' }
+in fetchDetail
+[
+  {
+    DataProvider: {
+      WebsiteURL: 'http://openchargemap.org',
+      DataProviderStatusType: [Object],
+      IsRestrictedEdit: false,
+      IsOpenDataLicensed: true,
+      IsApprovedImport: true,
+      License: 'Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)',
+      ID: 1,
+      Title: 'Open Charge Map Contributors'
+    },
+    OperatorInfo: {
+      WebsiteURL: 'http://www.teslamotors.com',
+      ID: 23,
+      Title: 'Tesla Motors (Worldwide)'
+    },
+    UsageType: {
+      IsPayAtLocation: false,
+      IsMembershipRequired: false,
+      IsAccessKeyRequired: false,
+      ID: 6,
+      Title: 'Private - For Staff, Visitors or Customers'
+    },
+    StatusType: {
+      IsOperational: true,
+      IsUserSelectable: true,
+      ID: 50,
+      Title: 'Operational'
+    },
+    SubmissionStatus: { IsLive: true, ID: 200, Title: 'Submission Published' },
+    IsRecentlyVerified: false,
+    ID: 79829,
+    UUID: '22646272-9D85-4FA0-8B11-8A67C8A9CED4',
+    DataProviderID: 1,
+    OperatorID: 23,
+    OperatorsReference: '7192',
+    UsageTypeID: 6,
+    UsageCost: 'Free',
+    AddressInfo: {
+      ID: 80175,
+      Title: 'Portland Marriott Downtown Waterfront',
+      AddressLine1: '1401 Southwest Naito Parkway',
+      Town: 'Portland',
+      StateOrProvince: 'OR',
+      Postcode: '97201',
+      CountryID: 2,
+      Country: [Object],
+      Latitude: 45.5123866,
+      Longitude: -122.6756475,
+      ContactTelephone1: '(503) 226-7600',
+      DistanceUnit: 0
+    },
+    Connections: [ [Object] ],
+    NumberOfPoints: 5,
+    GeneralComments: '1 Tesla Connector, up to 13kW.Available for patrons only. Please see valet.',
+    StatusTypeID: 50,
+    DateLastStatusUpdate: '2018-01-21T16:49:00Z',
+    DataQualityLevel: 1,
+    DateCreated: '2017-01-30T13:25:00Z',
+    SubmissionStatusTypeID: 200
+  }
+]
+{
+  id: 79829,
+  address: {
+    addressLine: '1401 Southwest Naito Parkway',
+    title: 'Portland Marriott Downtown Waterfront',
+    town: 'Portland',
+    state: 'OR',
+    postalCode: '97201'
+  },
+  connectionType: [ { typeId: 30, levelId: 2 } ],
+  usage: 6,
+  operatorTitle: 'Tesla Motors (Worldwide)',
+  website: 'http://www.teslamotors.com'
+}

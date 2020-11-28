@@ -139,7 +139,7 @@ app.get('/', (req, res) => {
 // render detail page
 app.get('/detail/:id', (req, res) =>{
   console.log(req.params);
-  fetchCharge(url, req.params.id)
+  fetchCharge(res, url, req.params.id)
   res.render('detail', {
       Title : 'Test result',
       id: req.params.id
