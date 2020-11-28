@@ -13,5 +13,4 @@ export interface Charger{
     lat?: string;
     lng?: string;
   }
-  
 }
