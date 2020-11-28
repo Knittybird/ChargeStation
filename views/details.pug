@@ -1,0 +1,65 @@
+extends layout.pug
+block main
+  .container
+    h1= charger.address.title
+    h4 Id: #{charger.id}
+    p Nearest Location: #{charger.address.addressLine}, #{charger.address.town}, #{charger.address.state} #{charger.address.postalCode}
+    p usage: 
+      if charger.usage = 0
+        span unknow
+      else if charger.usage = 1
+        span Public
+      else if charger.usage = 6
+        span  Private - For Staff, Visitors or Customers
+      else if charger.usage = 2
+        span Private - Restricted Access
+      else if charger.usage = 3
+        span Privatly owned - Notice Required
+      else if charger.usage = 4
+        span Membership Required
+      else if charger.usage = 7
+        span Public - Notice Required
+      else if charger.usage = 5
+        span Public - Pay At Location
+
+    each connection in charger.connectionType
+      p Connection Type:
+        case connection.typeId
+          when 1
+          when 7
+            span.ml-2 (type 1) J1772
+          when 32
+            span.ml-2 (type 1) CCS
+          when 33
+            span.ml-2 (type 2) CCS
+          when 2
+            span.ml-2 CHAdeMO
+          when 30
+            span.ml-2 Tesla (Model S/X)
+          when 31
+            span.ml-2 Tesla (Battery Swap)
+          when 27
+            span.ml-2 Tesla Supercharger
+          when 8
+            span.ml-2 Tesla (Roadster)
+          when 9
+            span.ml-2 NEMA 5-2OR
+          when 10
+            span.ml-2 NEMA 14-30
+          when 11
+            span.ml-2 NEMA 14-50
+          when 22
+            span.ml-2 NEMA 5-15R
+          when 15
+            span.ml-2 NEMA 6-15
+          when 14
+            span.ml-2 NEMA 6-20
+          when 1042
+            span.ml-2 NEMA TT-30R
+          default
+            span.ml-2 other
+
+      p Level: #{connection.levelId}
+    
+    if charger.operatorTitle
+      p Operator: #{charger.operatorTitle}, website: #{charger.website}
