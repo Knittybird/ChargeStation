@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require("express");
 const fetch = require("node-fetch");
-const app = express();
 import {Charger} from "./dataObjects";
 import {Connection} from "./dataObjects";
 
@@ -21,6 +20,7 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
     // copy conections into array
     let connections: Connection[] = [];
     let connector: Connection = {typeId: 0, levelId: 0};
+
     crg.Connections.forEach(connect => {
       connector.typeId = connect.ConnectionTypeID;
       connector.levelId = connect.LevelID;
