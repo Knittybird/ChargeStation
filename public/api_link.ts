@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-import { Location } from "./dataObjects";
+import {renderResults} from "./renderResults";
 const mapKey = process.env.MAP_KEY;
 const request = require("request-promise");
 const googleMapsClient = require("@google/maps").createClient({
@@ -29,7 +29,6 @@ module.exports = {
     distance_u: string,
     res
   ) {
-    let chargers: Location[] = [];
 
     let gcode: any = googleMapsClient.geocode(
       {
@@ -59,32 +58,7 @@ module.exports = {
           request(ret, function (error: any, response: any, body: any): any {
             if (!error && response.statusCode == 200) {
               let json_body = JSON.parse(body);
-              console.log(json_body)
-              let jb: any = 0;
-              
-              // for each charger returned grab the location
-              // information and push into array of chargers
-              json_body.forEach (jb => {
-                  const location: Location = {
-                    id: jb.ID,
-                    address: {
-                      addressLine: jb.AddressInfo.AddressLine1,
-                      title: jb.AddressInfo.Title,
-                      town: jb.AddressInfo.Town,
-                      state: jb.AddressInfo.StateOrProvince,
-                      postalCode: jb.AddressInfo.Postcode,
-                    },
-                    pos: {
-                      lat: jb.AddressInfo.Latitude,
-                      lng: jb.AddressInfo.Longitude,
-                    }
-                  };
-                  console.log(location);
-                  chargers.push(location);
-                  console.log(jb);
-              });
-            res.render("results_list", { chargers: chargers });
-            // res.render("search_results", { Title: 'in api_link' });
+              renderResults(res, json_body);
             } 
 
           });
