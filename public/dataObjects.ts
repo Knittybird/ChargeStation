@@ -1,5 +1,4 @@
 /* defines objects to pass data from backend to frontend  */
-
 export interface Charger{
   id: string;
   address: {
