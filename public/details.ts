@@ -12,8 +12,8 @@ export async function fetchCharge (url: string, id: string): Promise<any> {
     console.log(apicall );
 
     const results = await fetch(apicall );
-    console.log('after api call');
     const data: any  = await results.json();
+    console.log(data);
     const crg: any = data[0];
     // this is an array of connection [typeID, level]
     let connections: Connector[] = [[1,2]];
@@ -37,8 +37,11 @@ export async function fetchCharge (url: string, id: string): Promise<any> {
       },
       connectionType: connections,
       usage: crg.UsageTypeID,
-      operatorTitle: crg.OperatorInfo.Title,
-      website: crg.OperatorInfo.WebsiteURL
+    }
+
+    if (crg.OperatorInfo){
+      charger.operatorTitle = crg.OperatorInfo.Title,
+      charger.website = crg.OperatorInfo.WebsiteURL
     }
     console.log(charger);
   } catch (error) {
