@@ -2,14 +2,14 @@ require('dotenv').config();
 const express = require("express");
 const fetch = require("node-fetch");
 const app = express();
-import {Charger} from "./dataObjects"
-type Connector = [number, number]
+import {Charger} from "./dataObjects";
+import {Connection} from "./dataObjects";
 
 export async function fetchCharge (res, url: string, id: string): Promise<any> {
   try {
     console.log("in fetchDetail")
     let apicall = [url, `chargepointid=${id}`, `maxresults=10`, `verbose=false`].join("&");
-    console.log(apicall );
+    // console.log(apicall );
 
     const results = await fetch(apicall );
     const data: any  = await results.json();
@@ -17,15 +17,14 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
 
     const crg: any = data[0];
     
-    // this is an array of connection [typeID, level]
-    let connections: Connector[] = [[1,2]];
-    connections.pop();    // It seems the only way to define type
    
-    console.log(typeof connections)
-
-    // copy conection tuples into array
+    // copy conections into array
+    let connections: Connection[] = [];
+    let connector: Connection = {typeId: 0, levelId: 0};
     crg.Connections.forEach(connect => {
-      connections.push([connect.ConnectionTypeID, connect.LevelID]);
+      connector.typeId = connect.ConnectionTypeID;
+      connector.levelId = connect.LevelID;
+      connections.push(connector);
     });
 
     //copy data into charger record
@@ -38,19 +37,19 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
         state: crg.AddressInfo.StateOrProvince,
         postalCode: crg.AddressInfo.Postcode,
       },
-      // connectionType: connections,
-      // usage: crg.UsageTypeID,
+      connectionType: connections,
+      usage: crg.UsageTypeID,
     }
 
-    // if (crg.OperatorInfo){
-    //   charger.operatorTitle = crg.OperatorInfo.Title,
-    //   charger.website = crg.OperatorInfo.WebsiteURL
-    // }
+    if (crg.OperatorInfo){
+      charger.operatorTitle = crg.OperatorInfo.Title,
+      charger.website = crg.OperatorInfo.WebsiteURL
+    }
     console.log(charger);
   } catch (error) {
     // TODO: output error page
     console.log(error);
-    res.render('error', {error: error})
+    // res.render('error', {error: error})
   }
 }
 

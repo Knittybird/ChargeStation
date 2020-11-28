@@ -6,7 +6,6 @@
 Server running at http://localhost:5000
 { id: '3069' }
 in fetchDetail
-https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&chargepointid=3069&maxresults=10&verbose=false
 [
   {
     DataProvider: {
@@ -54,7 +53,6 @@ https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&ch
     SubmissionStatusTypeID: 100
   }
 ]
-object
 {
   id: 3069,
   address: {
@@ -63,11 +61,12 @@ object
     town: 'Portland',
     state: 'OR',
     postalCode: '97214'
-  }
+  },
+  connectionType: [ { typeId: 1, levelId: 2 } ],
+  usage: 1
 }
 { id: '79829' }
 in fetchDetail
-https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&chargepointid=79829&maxresults=10&verbose=false
 [
   {
     DataProvider: {
@@ -131,7 +130,6 @@ https://api.openchargemap.io/v3/poi/?key=8bc4f8db-272f-458b-82f7-c052a5c53c9a&ch
     SubmissionStatusTypeID: 200
   }
 ]
-object
 {
   id: 79829,
   address: {
@@ -140,5 +138,9 @@ object
     town: 'Portland',
     state: 'OR',
     postalCode: '97201'
-  }
+  },
+  connectionType: [ { typeId: 30, levelId: 2 } ],
+  usage: 6,
+  operatorTitle: 'Tesla Motors (Worldwide)',
+  website: 'http://www.teslamotors.com'
 }
