@@ -9,7 +9,7 @@ export interface Charger{
     state: string;
     postalCode: string;
   },
-  pos: {
+  pos?: {
     lat?: string;
     lng?: string;
   }
