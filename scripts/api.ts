@@ -75,6 +75,13 @@ app.post('/search_results', (req, res) => {
     });
 });
 
+// app.get('/detail/:id', (req, res) =>{
+//     res.render('detail', {
+//         Title : 'Test result',
+//         id: req.params.id
+//     });
+// });
+
 app.post('/directions_results', (req, res) => {
 
     res.render('search_results', {
