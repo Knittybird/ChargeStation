@@ -54,14 +54,18 @@ module.exports = {
             distance_u,
           ]);
 
+          if (req.body.isPublic === "on") {
+            ret = ret + '&usagetypeid=1';
+          }
+
           console.log(ret);
 
           request(ret, function (error: any, response: any, body: any): any {
             if (!error && response.statusCode == 200) {
               let json_body = JSON.parse(body);
             //   renderResults(res, json_body);
-                if (req.body.isPublic === "on")
-                    renderResults(res, json_body, true);
+                if (req.body.isPublic === "on")  // functoinality not used
+                    renderResults(res, json_body, false);
                 else
                     renderResults(res, json_body, false);
             } 

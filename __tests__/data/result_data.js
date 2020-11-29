@@ -12,7 +12,11 @@ export const chargers = [
     pos: {
       lat: "45.5097989",
       lng: "-122.6794873"
-    }
+    },
+    connectionType: [ { typeId: '1', levelId: '2' } ],
+    usage: '1',
+    operatorTitle: 'SemaCharge Network',
+    website: 'http://www.semacharge.com'
   },
   {
     id: "144407",
@@ -26,7 +30,9 @@ export const chargers = [
     pos: {
       lat: "45.510792",
       lng: "-122.67764"
-    }
+    },
+    connectionType: [ { typeId: 1, levelId: 2 } ],
+    usage: 1
   },
   {
     id: "97419",
@@ -40,7 +46,11 @@ export const chargers = [
     pos: {
       lat: "45.511486",
       lng: "-122.674101"
-    }
+    },
+  connectionType: [ { typeId: 30, levelId: 2 } ],
+  usage: 4,
+  operatorTitle: 'Tesla Motors (Worldwide)',
+  website: 'http://www.teslamotors.com'
   },
   {
     id: "144411",
@@ -55,6 +65,10 @@ export const chargers = [
       lat: "45.511592",
       lng: "-122.6786039" 
     },
+    connectionType: [ { typeId: 1, levelId: 2 } ],
+    usage: 1,
+    operatorTitle: 'Blink Network/ECOtality',
+    website: 'http://www.blinknetwork.com/'
   },
   {
     id: "3428",
@@ -68,7 +82,11 @@ export const chargers = [
     pos: {
       lat: "45.508501",
       lng: "-122.665932"
-    }
+    },
+    connectionType: [],
+    usage: undefined,
+    operatorTitle: '(Unknown Operator)',
+    website: undefined
   },
   {
     id: "79829",
@@ -96,6 +114,10 @@ export const chargers = [
     pos: {
       lat: "45.50932",
       lng: "-122.66639"
-    }
+    },
+    connectionType: [],
+    usage: undefined,
+    operatorTitle: '(Unknown Operator)',
+    website: undefined
   }
 ]

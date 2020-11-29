@@ -5,22 +5,23 @@ block main
     h4 Id: #{charger.id}
     p Nearest Location: #{charger.address.addressLine}, #{charger.address.town}, #{charger.address.state} #{charger.address.postalCode}
     p usage: 
-      if charger.usage = 0
-        span unknowen
-      else if charger.usage = 1
-        span Public
-      else if charger.usage = 6
-        span  Private - For Staff, Visitors or Customers
-      else if charger.usage = 2
-        span Private - Restricted Access
-      else if charger.usage = 3
-        span Privatly owned - Notice Required
-      else if charger.usage = 4
-        span Membership Required
-      else if charger.usage = 7
-        span Public - Notice Required
-      else if charger.usage = 5
-        span Public - Pay At Location
+      case charger.usage 
+        when 1
+          span Public
+        when 6
+          span  Private - For Staff, Visitors or Customers
+        when 2
+          span Private - Restricted Access
+        when 3
+          span Privatly owned - Notice Required
+        when 4
+          span Membership Required
+        when 7
+          span Public - Notice Required
+        when 5
+          span Public - Pay At Location
+        default 
+          span unknown
 
     each connection in charger.connectionType
       p Connection Type:
