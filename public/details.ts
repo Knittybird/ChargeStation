@@ -47,10 +47,11 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
       charger.website = crg.OperatorInfo.WebsiteURL
     }
     console.log(charger);
-    res.render('details', {charger: charger})
+    res.render('details', {charger: charger});
   }
   } catch (error) {
     // TODO: output error page
+    res.render('errors/error', {});
     console.log(error);
     // res.render('error', {error: error})
   }

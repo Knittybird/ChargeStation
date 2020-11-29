@@ -6,6 +6,6 @@
     "include": [
       "public/*",
       "dist/scripts/*",
-      "scripts/*"
+      "scripts/*", "dist/public/api_link.js"
     ]
   }

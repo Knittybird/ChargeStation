@@ -59,7 +59,7 @@ module.exports = {
           ]);
 
           if (req.body.isPublic === "on") {
-            ret = ret + '&usagetypeid=1';
+            ret = ret + '&usagetypeid=1,4,5,7';
           }
 
           console.log(ret);
