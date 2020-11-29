@@ -1,4 +1,4 @@
-import {chargers} from "./data/result_data.js"
+import {chargers} from "./data/result_data"
 
 const pug = require('pug');
 

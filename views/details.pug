@@ -5,7 +5,7 @@ block main
     h4.bg-success.rounded.pl-2 Id: #{charger.id}
     p Nearest Location: #{charger.address.addressLine}, #{charger.address.town}, #{charger.address.state} #{charger.address.postalCode}
     p usage: 
-      case charger.usage 
+      case charger.usage
         when 1
           span Public
         when 6
