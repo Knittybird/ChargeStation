@@ -2,6 +2,7 @@ import { Location } from "./dataObjects";
 
 export function renderResults(res, json_body) {
     let chargers: Location[] = [];
+    console.log(JSON.stringify(json_body, null, 2));
 
   // for each charger returned grab the location
   // information and push into array of chargers
@@ -22,8 +23,8 @@ export function renderResults(res, json_body) {
     };
     chargers.push(location);
 
-    console.log(location);
-    console.log(jb);
+    // console.log(location);
+    // console.log(JSON.stringify(jb, null, 2));
   });
   res.render("results_list", { chargers: chargers });
 }
