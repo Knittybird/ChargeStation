@@ -10,7 +10,7 @@ export function renderResults(res, json_body, pub=false) {
   {
       res.render("errors/no_results", {
         title : '0 Results',
-        desc : 'Oops! Looks liek we could not find what you were looking for...',
+        desc : 'Oops! Looks like we could not find what you were looking for...',
         search : "Search Again?"
       });
   }
