@@ -59,6 +59,7 @@ app.get('/search', (req, res) => {
 });
 
 app.post('/results_list', (req, res) => {
+    
     let output : string = "output=json";
     let distance : string= 'distance=' + req.body.radius;
     let distance_u :string = 'distanceunit=Miles';
@@ -66,9 +67,19 @@ app.post('/results_list', (req, res) => {
     let verbose :string = "verbose=false";
     let incl_comm :string = "includecomments=true";
     let max_results:string  = "maxresults=10"
-    let address : any= req.body.location
+    let address : any = req.body.location
+    let connection_type : string = "connectiontypeid=";
+    let level_id : string = "levelid=";
+    if(req.body.connectionType !== undefined)
+        connection_type = connection_type+req.body.connectionType;
+        if(connection_type==="connectiontypeid=7")
+            connection_type += ",1";//1's also code for J1772's
+        if(connection_type==="connectiontypeid=30")
+            connection_type += ",31,27,8"; //a 'tesla' code is too generic, include all tesla models
+    if(req.body.chargerType)
+        level_id = level_id+req.body.chargerType;
     let api = require('../public/api_link.js');
-    api.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u,res, req)
+    api.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u, connection_type, level_id,res, req)
 });
 
 app.get('/detail/:id', (req, res) =>{
