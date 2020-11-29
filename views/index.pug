@@ -2,16 +2,11 @@ extends layout.pug
 block main
   //- h2.text-center= Title
 
-  // cards for different features
+  //-cards for different features
 
   .container.mt-5
-    .row.my-4.justify-content-center
-      .card.col-lg-3.text-center
-        h4.card-title Find a Charging Station
-        p this is a discription of this feature I need to put more space in here to see what happens
-        .row.justify-content-center
-          a.btn.btn-primary.btn-sm.mb-1.col-4(href='search') Search
-
+    include includes/pop_up.pug
+    +pop_up(title, desc, search)
     //- .row.justify-content-center
     //-   //- .card.mt-5(style={width: '75em', height: '25em'})
     //-   .card(style={width: '50em', height: '30em'})
