@@ -2,8 +2,8 @@
 block cards
 mixin card(image, alter, title, lnk, desc)
   .col-6
-      .card.border.bg-success(style = {display: inline-block})
-        img.card-img-top.rounded(src=image alt=alter height="400" width="auto")
+      .card.border-success.bg-white(style = {display: inline-block})
+        img.card-img-top.rounded.img-fluid(src=image alt=alter)
         .card-body
           h5.card-title=title
           p.card-text=desc

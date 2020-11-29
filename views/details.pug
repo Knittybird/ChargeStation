@@ -1,8 +1,8 @@
 extends layout.pug
 block main
-  .container
+  .container.bg-light.mt-5.mb-5.pt-3.pb-3.pl-3.pr-3.rounded.content-justify-center
     h1= charger.address.title
-    h4 Id: #{charger.id}
+    h4.bg-success.rounded.pl-2 Id: #{charger.id}
     p Nearest Location: #{charger.address.addressLine}, #{charger.address.town}, #{charger.address.state} #{charger.address.postalCode}
     p usage: 
       case charger.usage
