@@ -14,6 +14,7 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
     const data: any  = await results.json();
     console.log(data);
 
+    if(data) {
     const crg: any = data[0];
     
    
@@ -47,6 +48,7 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
     }
     console.log(charger);
     res.render('details', {charger: charger})
+  }
   } catch (error) {
     // TODO: output error page
     console.log(error);

@@ -27,7 +27,8 @@ block main
           .card.col-md-3.form-group
             h6 Connection Type
             .form-inline.mb-2
-              input.form.check.mr-2#j1772(type="checkbox" name="connectionType" value="7")
+              //-1 is also needed for this charger type
+              input.form.check.mr-2#j1772(type="checkbox" name="connectionType" value="7") 
               label(for=j1772) (type 1) J1772
             .form-inline.mb-2
               input.form.check.mr-2#ccs1(type="checkbox" name="connectionType" value="32")
