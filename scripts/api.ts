@@ -1,3 +1,5 @@
+/**/
+
 import path = require("path");
 import {fetchCharge} from "../public/details"
 require('dotenv').config();
@@ -23,6 +25,9 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
 
     res.render('index', {
+        title : "Find a Charging Station",
+        desc : "This is a discription of this feature I need to put more space in here to see what happens",
+        search : "Search"
     });
 });
 
@@ -35,7 +40,9 @@ app.get('/gmaps', (req, res) => {
 
 app.get('/index', (req, res) => {
     res.render('index', {
-        Title : 'Home'
+        title : "Find a Charging Station",
+        desc : "This is a discription of this feature I need to put more space in here to see what happens",
+        search : "Search"
     });
 });
 
@@ -59,7 +66,6 @@ app.get('/search', (req, res) => {
 });
 
 app.post('/results_list', (req, res) => {
-    
     let output : string = "output=json";
     let distance : string= 'distance=' + req.body.radius;
     let distance_u :string = 'distanceunit=Miles';
@@ -70,6 +76,7 @@ app.post('/results_list', (req, res) => {
     let address : any = req.body.location
     let connection_type : string = "connectiontypeid=";
     let level_id : string = "levelid=";
+
     if(req.body.connectionType !== undefined)
         connection_type = connection_type+req.body.connectionType;
         if(connection_type==="connectiontypeid=7")
@@ -80,6 +87,7 @@ app.post('/results_list', (req, res) => {
         level_id = level_id+req.body.chargerType;
     let api = require('../public/api_link.js');
     api.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u, connection_type, level_id,res, req)
+
 });
 
 app.get('/detail/:id', (req, res) =>{
@@ -99,3 +107,5 @@ app.post('/directions_results', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+
+
