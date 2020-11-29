@@ -21,11 +21,13 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
     let connections: Connection[] = [];
     let connector: Connection = {typeId: 0, levelId: 0};
 
-    crg.Connections.forEach(connect => {
-      connector.typeId = connect.ConnectionTypeID;
-      connector.levelId = connect.LevelID;
-      connections.push(connector);
-    });
+    if (crg.Connections) {
+      crg.Connections.forEach (connect => {
+        connector.typeId = connect.ConnectionTypeID;
+        connector.levelId = connect.LevelID;
+        connections.push(connector);
+      });
+    }
 
     //copy data into charger record
     let charger : Charger = {
@@ -38,12 +40,15 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
         postalCode: crg.AddressInfo.Postcode,
       },
       connectionType: connections,
-      usage: crg.UsageTypeID,
+      usage: "",
     }
 
     if (crg.OperatorInfo){
       charger.operatorTitle = crg.OperatorInfo.Title,
       charger.website = crg.OperatorInfo.WebsiteURL
+    }
+    if (crg.UsageTypeID){
+      charger.usage = crg.UsageTypeID;
     }
     console.log(charger);
     res.render('details', {charger: charger})
