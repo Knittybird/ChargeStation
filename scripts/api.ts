@@ -1,3 +1,5 @@
+/**/
+
 import path = require("path");
 import {fetchCharge} from "../public/details"
 require('dotenv').config();
@@ -23,6 +25,9 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
 
     res.render('index', {
+        title : "Find a Charging Station",
+        desc : "This is a discription of this feature I need to put more space in here to see what happens",
+        search : "Search"
     });
 });
 
@@ -35,7 +40,9 @@ app.get('/gmaps', (req, res) => {
 
 app.get('/index', (req, res) => {
     res.render('index', {
-        Title : 'Home'
+        title : "Find a Charging Station",
+        desc : "This is a discription of this feature I need to put more space in here to see what happens",
+        search : "Search"
     });
 });
 
@@ -66,9 +73,21 @@ app.post('/results_list', (req, res) => {
     let verbose :string = "verbose=false";
     let incl_comm :string = "includecomments=true";
     let max_results:string  = "maxresults=10"
-    let address : any= req.body.location
+    let address : any = req.body.location
+    let connection_type : string = "connectiontypeid=";
+    let level_id : string = "levelid=";
+
+    if(req.body.connectionType !== undefined)
+        connection_type = connection_type+req.body.connectionType;
+        if(connection_type==="connectiontypeid=7")
+            connection_type += ",1";//1's also code for J1772's
+        if(connection_type==="connectiontypeid=30")
+            connection_type += ",31,27,8"; //a 'tesla' code is too generic, include all tesla models
+    if(req.body.chargerType)
+        level_id = level_id+req.body.chargerType;
     let api = require('../public/api_link.js');
-    api.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u,res, req)
+    api.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u, connection_type, level_id,res, req)
+
 });
 
 app.get('/detail/:id', (req, res) =>{
@@ -88,3 +107,5 @@ app.post('/directions_results', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+
+
