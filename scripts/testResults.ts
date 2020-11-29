@@ -3,6 +3,7 @@
 
 import path = require("path");
 import {fetchCharge} from "../public/details"
+import {Charger} from "../public/dataObjects"
 require('dotenv').config();
 
 // set up url for opencharge
@@ -138,11 +139,24 @@ app.get('/', (req, res) => {
 
 // render detail page
 app.get('/detail/:id', (req, res) =>{
-  console.log(req.params);
-  fetchCharge(url, req.params.id)
-  res.render('detail', {
+  const params: Charger = {
+    id: "89787",
+    address: {
+      addressLine: '275 Beavercreek Rd',
+      title: 'Hilltop Collision Center',
+      town: 'Oregon City',
+      state: 'OR',
+      postalCode: '97045'
+    },
+    connectionType: [ { typeId: 1, levelId: 2 }, { typeId: 9, levelId: 1 } ],
+    usage: "1",
+    operatorTitle: 'SemaCharge Network',
+    website: 'http://www.semacharge.com'
+  }
+  // fetchCharge(res, url, req.params.id)
+  res.render('details', {
       Title : 'Test result',
-      id: req.params.id
+      charger: params
   });
 });
 
