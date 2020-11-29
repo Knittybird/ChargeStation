@@ -6,23 +6,30 @@ import {Connection} from "./dataObjects";
 
 export async function fetchCharge (res, url: string, id: string): Promise<any> {
   try {
-    console.log("in fetchDetail")
     let apicall = [url, `chargepointid=${id}`, `maxresults=10`, `verbose=false`].join("&");
-    // console.log(apicall );
 
     const results = await fetch(apicall );
     const data: any  = await results.json();
-    console.log(data);
 
-    const crg: any = data[0];
-    
-   
+    const charger: Charger = parseDetailData(data[0]);
+    console.log(charger);
+    res.render('details', {charger: charger})
+
+  } catch (error) {
+    // TODO: output error page
+    console.log(error);
+    // res.render('error', {error: error})
+  }
+}
+
+function parseDetailData (chargeData: any): Charger  {
+
     // copy conections into array
     let connections: Connection[] = [];
     let connector: Connection = {typeId: 0, levelId: 0};
 
-    if (crg.Connections) {
-      crg.Connections.forEach (connect => {
+    if (chargeData.Connections) {
+      chargeData.Connections.forEach (connect => {
         connector.typeId = connect.ConnectionTypeID;
         connector.levelId = connect.LevelID;
         connections.push(connector);
@@ -31,31 +38,25 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
 
     //copy data into charger record
     let charger : Charger = {
-      id: crg.ID,
+      id: chargeData.ID,
       address: {
-        addressLine: crg.AddressInfo.AddressLine1,
-        title: crg.AddressInfo.Title,
-        town: crg.AddressInfo.Town,
-        state: crg.AddressInfo.StateOrProvince,
-        postalCode: crg.AddressInfo.Postcode,
+        addressLine: chargeData.AddressInfo.AddressLine1,
+        title: chargeData.AddressInfo.Title,
+        town: chargeData.AddressInfo.Town,
+        state: chargeData.AddressInfo.StateOrProvince,
+        postalCode: chargeData.AddressInfo.Postcode,
       },
       connectionType: connections,
       usage: "",
     }
 
-    if (crg.OperatorInfo){
-      charger.operatorTitle = crg.OperatorInfo.Title,
-      charger.website = crg.OperatorInfo.WebsiteURL
+    if (chargeData.OperatorInfo){
+      charger.operatorTitle = chargeData.OperatorInfo.Title,
+      charger.website = chargeData.OperatorInfo.WebsiteURL
     }
-    if (crg.UsageTypeID){
-      charger.usage = crg.UsageTypeID;
+    if (chargeData.UsageTypeID){
+      charger.usage = chargeData.UsageTypeID;
     }
-    console.log(charger);
-    res.render('details', {charger: charger})
-  } catch (error) {
-    // TODO: output error page
-    console.log(error);
-    // res.render('error', {error: error})
-  }
+    return charger;
 }
 
