@@ -1,4 +1,5 @@
 import path = require("path");
+import {fetchCharge} from "../public/details"
 require('dotenv').config();
 
 const express : any = require('express');
@@ -68,16 +69,11 @@ app.post('/results_list', (req, res) => {
     let address : any= req.body.location
     let api = require('../public/api_link.js');
     api.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u,res)
-    // res.render('search_results', {
-    //     Title : 'Results'
-    // });
 });
 
 app.get('/detail/:id', (req, res) =>{
-    res.render('detail', {
-        Title : 'Test result',
-        id: req.params.id
-    });
+
+    fetchCharge(res, url, req.params.id);
 });
 
 app.post('/directions_results', (req, res) => {
