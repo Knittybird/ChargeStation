@@ -27,7 +27,8 @@ module.exports = {
     compact: string,
     distance: string,
     distance_u: string,
-    res
+    res : any,
+    req : any
   ) {
 
     let gcode: any = googleMapsClient.geocode(
@@ -53,12 +54,16 @@ module.exports = {
             distance_u,
           ]);
 
-          // console.log(ret);
+          console.log(ret);
 
           request(ret, function (error: any, response: any, body: any): any {
             if (!error && response.statusCode == 200) {
               let json_body = JSON.parse(body);
-              renderResults(res, json_body);
+            //   renderResults(res, json_body);
+                if (req.body.isPublic === "on")
+                    renderResults(res, json_body, true);
+                else
+                    renderResults(res, json_body, false);
             } 
 
           });

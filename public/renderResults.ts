@@ -1,6 +1,6 @@
 import { Location } from "./dataObjects";
 
-export function renderResults(res, json_body) {
+export function renderResults(res, json_body, pub=false) {
     let chargers: Location[] = [];
 
   // for each charger returned grab the location
@@ -20,7 +20,11 @@ export function renderResults(res, json_body) {
         lng: jb.AddressInfo.Longitude,
       },
     };
-    chargers.push(location);
+    
+    if(pub===true && jb.UsageType.Title==="Public")
+      chargers.push(location);
+    else if(pub===false)
+      chargers.push(location);
 
     console.log(location);
     console.log(jb);
