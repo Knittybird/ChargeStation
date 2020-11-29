@@ -68,7 +68,7 @@ app.post('/results_list', (req, res) => {
     let max_results:string  = "maxresults=10"
     let address : any= req.body.location
     let api = require('../public/api_link.js');
-    api.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u,res)
+    api.addr(address, url,verbose, output, incl_comm, max_results, compact,distance, distance_u,res, req)
 });
 
 app.get('/detail/:id', (req, res) =>{

@@ -6,7 +6,7 @@ block main
     p Nearest Location: #{charger.address.addressLine}, #{charger.address.town}, #{charger.address.state} #{charger.address.postalCode}
     p usage: 
       if charger.usage = 0
-        span unknow
+        span unknowen
       else if charger.usage = 1
         span Public
       else if charger.usage = 6
