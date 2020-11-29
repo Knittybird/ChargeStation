@@ -14,17 +14,22 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
     const data: any  = await results.json();
     console.log(data);
 
+    if(data) {
     const crg: any = data[0];
     
-   
+    if(crg) {
     // copy conections into array
     let connections: Connection[] = [];
-    let connector: Connection = {typeId: 0, levelId: 0};
 
     crg.Connections.forEach(connect => {
+      let connector: Connection = {typeId: 0, levelId: 0};
+
       connector.typeId = connect.ConnectionTypeID;
       connector.levelId = connect.LevelID;
       connections.push(connector);
+      console.log(connector);
+      console.log(connections);
+
     });
 
     //copy data into charger record
@@ -46,9 +51,12 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
       charger.website = crg.OperatorInfo.WebsiteURL
     }
     console.log(charger);
-    res.render('details', {charger: charger})
+    res.render('details', {charger: charger});
+  }
+  }
   } catch (error) {
     // TODO: output error page
+    res.render('errors/error', {});
     console.log(error);
     // res.render('error', {error: error})
   }

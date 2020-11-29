@@ -27,7 +27,10 @@ module.exports = {
     compact: string,
     distance: string,
     distance_u: string,
-    res
+    connection_type : string,
+    level_id : string,
+    res : any,
+    req : any
   ) {
 
     let gcode: any = googleMapsClient.geocode(
@@ -51,14 +54,24 @@ module.exports = {
             lng,
             distance,
             distance_u,
+            connection_type,
+            level_id
           ]);
 
-          // console.log(ret);
+          if (req.body.isPublic === "on") {
+            ret = ret + '&usagetypeid=1,4,5,7';
+          }
+
+          console.log(ret);
 
           request(ret, function (error: any, response: any, body: any): any {
             if (!error && response.statusCode == 200) {
               let json_body = JSON.parse(body);
-              renderResults(res, json_body);
+            //   renderResults(res, json_body);
+                if (req.body.isPublic === "on")  // functoinality not used
+                    renderResults(res, json_body, false);
+                else
+                    renderResults(res, json_body, false);
             } 
 
           });

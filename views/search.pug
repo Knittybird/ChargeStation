@@ -22,12 +22,13 @@ block main
               label(for='level2') Level 2 Charger
             .form-inline.mb-2
               input.form-check.mr-2#level3(type="checkbox" name="chargerType" value="3")
-              label(for='level3') Level 2 Charger
+              label(for='level3') Level 3 Charger
               
           .card.col-md-3.form-group
             h6 Connection Type
             .form-inline.mb-2
-              input.form.check.mr-2#j1772(type="checkbox" name="connectionType" value="7")
+              //-1 is also needed for this charger type
+              input.form.check.mr-2#j1772(type="checkbox" name="connectionType" value="7") 
               label(for=j1772) (type 1) J1772
             .form-inline.mb-2
               input.form.check.mr-2#ccs1(type="checkbox" name="connectionType" value="32")
@@ -39,6 +40,7 @@ block main
               input.form.check.mr-2#chademo(type="checkbox" name="connectionType" value="2")
               label(for=chademo) CHAdeMO
             .form-inline.mb-2
+              //-this selection will also search foor 8, 27, and 31 
               input.form.check.mr-2#tesla(type="checkbox" name="connectionType" value="30")
               label(for=tesla) Tesla
 
