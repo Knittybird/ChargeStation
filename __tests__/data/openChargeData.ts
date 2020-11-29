@@ -904,9 +904,6 @@ const openCharge: any = [
     "DateCreated": "2010-02-28T00:00:00Z",
     "SubmissionStatusTypeID": 200
   },
-]
-[]
-[
   {
     "DataProvider": {
       "WebsiteURL": "http://www.afdc.energy.gov/",

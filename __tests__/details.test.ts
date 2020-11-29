@@ -53,6 +53,34 @@ function sum (a,b) {return a + b};
       },
       "Connections": [
         {
+          "ID": 200595,
+          "ConnectionTypeID": 32,
+          "ConnectionType": {
+            "FormalName": "IEC 62196-3 Configuration EE",
+            "IsDiscontinued": false,
+            "IsObsolete": false,
+            "ID": 32,
+            "Title": "CCS (Type 1)"
+          },
+          "LevelID": 3,
+          "Level": {
+            "Comments": "40KW and Higher",
+            "IsFastChargeCapable": true,
+            "ID": 3,
+            "Title": "Level 3:  High (Over 40kW)"
+          },
+          "Amps": 100,
+          "Voltage": 400,
+          "PowerKW": 40,
+          "CurrentTypeID": 30,
+          "CurrentType": {
+            "Description": "Direct Current",
+            "ID": 30,
+            "Title": "DC"
+          },
+          "Quantity": 1
+        },
+        {
           "ID": 6896,
           "ConnectionTypeID": 9,
           "ConnectionType": {
@@ -191,6 +219,10 @@ test('checks that operator fields blank other fields filled', () => {
       "postalCode": "97045"
     },
     "connectionType": [
+      {
+        "typeId": 32,
+        "levelId": 3
+      },
       {
         "typeId": 9,
         "levelId": 1
