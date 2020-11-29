@@ -27,6 +27,8 @@ module.exports = {
     compact: string,
     distance: string,
     distance_u: string,
+    connection_type : string,
+    level_id : string,
     res : any,
     req : any
   ) {
@@ -52,6 +54,8 @@ module.exports = {
             lng,
             distance,
             distance_u,
+            connection_type,
+            level_id
           ]);
 
           if (req.body.isPublic === "on") {
