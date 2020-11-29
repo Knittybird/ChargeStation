@@ -29,10 +29,10 @@ export function parseDetailData (chargeData: any): Charger  {
 
     // copy conections into array
     let connections: Connection[] = [];
-    let connector: Connection = {typeId: 0, levelId: 0};
 
     if (chargeData.Connections) {
       chargeData.Connections.forEach (connect => {
+        let connector: Connection = {typeId: 0, levelId: 0};
         connector.typeId = connect.ConnectionTypeID;
         connector.levelId = connect.LevelID;
         connections.push(connector);

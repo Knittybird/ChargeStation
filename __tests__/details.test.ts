@@ -106,6 +106,29 @@ function sum (a,b) {return a + b};
       "SubmissionStatusTypeID": 100
     };
     
+    
+  const output1: Charger = {
+    "id": "9215",
+    "address": {
+      "addressLine": "150 S Beavercreek Rd",
+      "title": "150 S Beavercreek Rd",
+      "town": "Oregon City",
+      "state": "OR",
+      "postalCode": "97045"
+    },
+    "connectionType": [
+      {
+        "typeId": 32,
+        "levelId": 3
+      },
+      {
+        "typeId": 9,
+        "levelId": 1
+      }
+    ],
+    "usage": "1",
+  };
+    
     const input2: any = {
       "OperatorInfo": {
         "WebsiteURL": "http://www.shorepower.com/",
@@ -181,9 +204,7 @@ function sum (a,b) {return a + b};
       "DateCreated": "2012-01-23T15:12:00Z",
       "SubmissionStatusTypeID": 100
     };
-
-test('checks that the output matches all fields', () => {
-  const output: Charger = {
+  const output2: Charger = {
     "id": "9215",
     "address": {
       "addressLine": "150 S Beavercreek Rd",
@@ -203,37 +224,18 @@ test('checks that the output matches all fields', () => {
     "website": "http://www.shorepower.com/"
   };
 
+test('checks that the output matches all fields', () => {
+
   // expect(sum(3, 4)).toEqual(7);
-  expect(parseDetailData(input2)).toEqual(output);
+  expect(parseDetailData(input2)).toEqual(output2);
  });
 
 
 test('checks that operator fields blank other fields filled', () => {
-  const output: Charger = {
-    "id": "9215",
-    "address": {
-      "addressLine": "150 S Beavercreek Rd",
-      "title": "150 S Beavercreek Rd",
-      "town": "Oregon City",
-      "state": "OR",
-      "postalCode": "97045"
-    },
-    "connectionType": [
-      {
-        "typeId": 32,
-        "levelId": 3
-      },
-      {
-        "typeId": 9,
-        "levelId": 1
-      }
-    ],
-    "usage": "1",
-  };
 
   // expect(sum(3, 4)).toEqual(7);
   const charger: Charger = parseDetailData(input1);
-  expect(charger).toEqual(output);
+  expect(charger).toEqual(output1);
   expect(charger.operatorTitle).toBeUndefined;
   expect(charger.website).toBeUndefined;
  });
