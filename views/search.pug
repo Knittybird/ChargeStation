@@ -1,18 +1,18 @@
 extends layout.pug
 block main
-  .container
+  .container.mt-5.mb-5
     .row.justify-content-center
-      form.col-8(action='/results_list' method='post')
+      form.col-8.bg-light.pb-3.pt-3.rounded(action='/results_list' method='post')
         h1.text-center Find A Charger
         .form-group.row.justify-content-center
           // label(for='location') Location*
-          input.col-md-6#location.form-control(type='text' name="location" placeholder="Location" required)
+          input.col-md-6#location.form-control.border-success(type='text' name="location" placeholder="Location" required)
         // ChargerTypes:ID 
           1 = low und 2kW
           2 = med over 2kW
           3 = high over 40kW
         .form-group.row.justify-content-center
-          .card.col-md-3.mr-3.form-group
+          .card.col-md-3.mr-3.form-group.border-success
             h6 Charger Types
             .form-inline.mb-2
               input.form-check.mr-2#level1(type="checkbox" name="chargerType" value="1")
@@ -24,7 +24,7 @@ block main
               input.form-check.mr-2#level3(type="checkbox" name="chargerType" value="3")
               label(for='level3') Level 3 Charger
               
-          .card.col-md-3.form-group
+          .card.col-md-3.form-group.border-success
             h6 Connection Type
             .form-inline.mb-2
               //-1 is also needed for this charger type

@@ -1,10 +1,10 @@
 extends layout.pug
 block main
-  .container
+  .container.bg-light.mt-5.mb-5.pt-3.pb-3.pl-3.pr-3.rounded.content-justify-center
     h1 Results
 
-    table.table-responsive.table-hover#chargers
-      thead
+    table.table-responsive.table-hover.table-striped.table-light.border-success#chargers
+      thead.bg-success.rounded
         tr
           th Name
           th Address
@@ -12,7 +12,7 @@ block main
           th.d-none Lattitude, Longitude
       tbody
         each charger in chargers
-          tr
+          tr.border-success
             // make the whole line clickable to bring you to detail page
             td= charger.address.title
             td #{charger.address.addressLine} #{charger.address.town}, #{charger.address.state} #{charger.address.postalCode}
