@@ -40,8 +40,8 @@ app.get('/gmaps', (req, res) => {
 
 app.get('/index', (req, res) => {
     res.render('index', {
-        title : "Find a Charging Station",
-        desc : "This is a discription of this feature I need to put more space in here to see what happens",
+        title : "Welcome to Where's a Charger!",
+        desc : "Click below to search for a charger, or checkout the rest of our site!",
         search : "Search"
     });
 });

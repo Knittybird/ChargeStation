@@ -1,18 +1,23 @@
 extends layout.pug
 block main
-  .container.bg-light
-    #title
+  .container.bg-light.mt-5.mb-5.rounded
+    #title.pt-3
       h1 Welcome to Open Charge!
-    section
+    div
       h2 Usage
       p
-        | This site is for all your electric charging needs.  Here you can search for chargers in your area and filter them by type.  We always recommend to search for public chargers since they are free, but you can search for a mix of public and private with the search tool. 
+        | This site is for all your electric charging needs.  Here you can search for chargers in your area and filter them by type.  We always recommend to search for public chargers since they are free, but you can search for a mix of public and private with the search tool.
+        | All our data is courtesy of the 
+        a(href="Open Charge 
 
-    section
+    div.mt-3
       h2 Charger Types
-      #charger_types
-        img(src="https://wallbox.com/media/cms/copper/graphics-FAQs-04.jpg" alt="Table of Charger Types" class="rounded" height="350" width="100%")
+      #charger_types.img-fluid
+      .col-12
+        .card.border-success.bg-white(style = {display: inline-block})
+          img.card-img-top.rounded.img-fluid(src="https://evcharging.enelx.com/images/PR/Articles/blog/EMW_plugs_.jpg" alt="Table of Charger Types")
+        //-img(src="https://evcharging.enelx.com/images/PR/Articles/blog/EMW_plugs_.jpg" alt="Table of Charger Types" class="rounded")
       
-    section
+    section.pb-5.mt-3
       h2 Features
       include includes/cards.pug
