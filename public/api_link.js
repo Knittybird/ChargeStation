@@ -19,7 +19,7 @@ function options(options) {
     return output;
 }
 module.exports = {
-    addr: function addr_to_latlng(addr, url, verbose, output, incl_comm, max_results, compact, distance, distance_u, res, req) {
+    addr: function addr_to_latlng(addr, url, verbose, output, incl_comm, max_results, compact, distance, distance_u, connection_type, level_id, res, req) {
         var gcode = googleMapsClient.geocode({
             address: addr
         }, function (err, response) {
@@ -37,14 +37,19 @@ module.exports = {
                     lng,
                     distance,
                     distance_u,
+                    connection_type,
+                    level_id
                 ]);
+                if (req.body.isPublic === "on") {
+                    ret = ret + '&usagetypeid=1,4,5,7';
+                }
                 console.log(ret);
                 request(ret, function (error, response, body) {
                     if (!error && response.statusCode == 200) {
                         var json_body = JSON.parse(body);
                         //   renderResults(res, json_body);
-                        if (req.body.isPublic === "on")
-                            renderResults_1.renderResults(res, json_body, true);
+                        if (req.body.isPublic === "on") // functoinality not used
+                            renderResults_1.renderResults(res, json_body, false);
                         else
                             renderResults_1.renderResults(res, json_body, false);
                     }
