@@ -1,16 +1,15 @@
 //-A set of three cards that can be used on multiple pages
 block cards
-mixin card(image, alter, title, lnk)
+mixin card(image, alter, title, lnk, desc)
   .col-6
       .card(style = {display: inline-block})
-        img.card-img-top(src=image alt=alter height="400" width="auto")
+        img.card-img-top.rounded(src=image alt=alter height="400" width="auto")
         .card-body
           h5.card-title=title
-          p.card-text
-            | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
-          a.btn.btn-primary(href=lnk) Go somewhere
+          p.card-text=desc
+          a.btn.btn-primary(href=lnk) Go
 .container
   .row.h-100.justify-content-center
-    +card("https://www.jonesvilledistrictlibrary.michlibrary.org/search-icon-3.png/@@images/image.png", "Search Icon", "Find a Charger", "../search")
-    +card("https://freepngimg.com/download/united_states/76079-google-computer-icons-states-maps-united-location.png", "Directions Icon", "Plan A Route", "../directions")
+    +card("https://www.jonesvilledistrictlibrary.michlibrary.org/search-icon-3.png/@@images/image.png", "Search Icon", "Find a Charger", "../search", "Search for chargers near your current location! You can search by charger type!")
+    +card("https://freepngimg.com/download/united_states/76079-google-computer-icons-states-maps-united-location.png", "Directions Icon", "Plan A Route - COMING SOON!", "../directions", "Plan a route and see what chargers are availible along the way!")
     //-+card("#", "#")
