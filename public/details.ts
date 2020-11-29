@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const fetch = require("node-fetch");
+const util = require("util");
 import {Charger} from "./dataObjects";
 import {Connection} from "./dataObjects";
 
@@ -8,11 +9,13 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
   try {
     let apicall = [url, `chargepointid=${id}`, `maxresults=10`, `verbose=false`].join("&");
 
+
     const results = await fetch(apicall );
     const data: any  = await results.json();
+    console.log(JSON.stringify(data, null, 2))
 
     const charger: Charger = parseDetailData(data[0]);
-    console.log(charger);
+    console.log(JSON.stringify(charger, null, 2));
     res.render('details', {charger: charger})
 
   } catch (error) {
@@ -22,7 +25,7 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
   }
 }
 
-function parseDetailData (chargeData: any): Charger  {
+export function parseDetailData (chargeData: any): Charger  {
 
     // copy conections into array
     let connections: Connection[] = [];
@@ -38,7 +41,7 @@ function parseDetailData (chargeData: any): Charger  {
 
     //copy data into charger record
     let charger : Charger = {
-      id: chargeData.ID,
+      id: chargeData.ID.toString(),
       address: {
         addressLine: chargeData.AddressInfo.AddressLine1,
         title: chargeData.AddressInfo.Title,
@@ -55,7 +58,7 @@ function parseDetailData (chargeData: any): Charger  {
       charger.website = chargeData.OperatorInfo.WebsiteURL
     }
     if (chargeData.UsageTypeID){
-      charger.usage = chargeData.UsageTypeID;
+      charger.usage = chargeData.UsageTypeID.toString();
     }
     return charger;
 }

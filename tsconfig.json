@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "types": ["googlemaps", "node"],
+      "types": ["googlemaps", "node", "jest"],
       "outDir": "dist"
     },
     "include": [
