@@ -4,9 +4,10 @@ import path = require("path");
 import {fetchCharge} from "../public/details"
 require('dotenv').config();
 
+const port : string|number = process.env.PORT || 5000;
+
 const express : any = require('express');
 const app : any = express();
-const port : number = parseInt(process.env.PORT, 10) || 5000;
 const request : any = require('request-promise');
 const base : string = 'https://api.openchargemap.io/v3/poi/?'; 
 const chargeKey : string = process.env.OPENCHARGE_KEY
