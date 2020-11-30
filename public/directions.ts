@@ -32,7 +32,7 @@ module.exports = {
     req : any
   ) {
 
-    console.log(res);
+    // console.log(res);
     await googleMapsClient.geocode(
       {
         address: origin,
@@ -68,12 +68,12 @@ module.exports = {
                     //     ret = ret + '&usagetypeid=1,4,5,7';
                     // }
 
-                    console.log(ret);
+                    // console.log(ret);
 
                     request(ret, function (error: any, response: any, body: any): any {
                         if (!error && response.statusCode == 200) {
                         let json_body = JSON.parse(body);
-                        console.log(json_body);
+                        // console.log(json_body);
                         dirResults(res, json_body);
                             // if (req.body.isPublic === "on")  // functoinality not used
                             //     renderResults(res, json_body, false);

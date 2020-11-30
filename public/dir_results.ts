@@ -5,7 +5,7 @@ export function dirResults(res, json_body) {
 
   // for each charger returned grab the location
   // information and push into array of chargers
-  console.log(json_body);
+  // console.log(json_body);
   if(json_body.length < 1)
   {
       res.render("errors/no_results", {
@@ -31,10 +31,10 @@ export function dirResults(res, json_body) {
       },
     };
     chargers.push(location);
-    console.log(location);
-    console.log(jb);
+    // console.log(location);
+    // console.log(jb);
   });
-  console.log(chargers);
+  // console.log(chargers);
   res.render("results_list", { chargers: chargers });
 }
   
