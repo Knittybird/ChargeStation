@@ -9,7 +9,7 @@
   "main": "dist/scripts/api.js",
   "engines":  {
     "node": "12.19.x"
-  }
+  },
   "scripts": {
     "start": "node dist/scripts/api.js",
     "postinstall": "tsc",
