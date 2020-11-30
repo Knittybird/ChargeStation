@@ -98,13 +98,13 @@ app.get('/detail/:id', (req, res) =>{
 app.post('/directions_results', (req, res) => { //GET FOR TESTING
     console.log("in form");
     let output : string = "output=json";
-    let org : string = "Portland OR";//FOR TESTING
-    let dest : string = "Bend OR";
+    let org : string = req.body.to;//FOR TESTING
+    let dest : string = req.body.from;
     //let distance_u :string = 'distanceunit=Miles';
     let compact :string = "compact=false";
     let verbose :string = "verbose=false";
     let incl_comm :string = "includecomments=true";
-    let max_results:string  = "maxresults=10"
+    let max_results:string  = "maxresults=50"
     let connection_type : string = "connectiontypeid=";
     let level_id : string = "levelid=";
 
