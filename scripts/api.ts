@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
     res.render('index', {
         title : "Find a Charging Station",
-        desc : "This is a discription of this feature I need to put more space in here to see what happens",
+        desc : "Where is your next charg up comming from? Take a look and find out.",
         search : "Search"
     });
 });
@@ -42,7 +42,7 @@ app.get('/gmaps', (req, res) => {
 app.get('/index', (req, res) => {
     res.render('index', {
         title : "Find a Charging Station",
-        desc : "This is a discription of this feature I need to put more space in here to see what happens",
+        desc : "Where is your next charge up comming from? Take a look and find out.",
         search : "Search"
     });
 });
