@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
     res.render('index', {
         title : "Find a Charging Station",
-        desc : "This is a discription of this feature I need to put more space in here to see what happens",
+        desc : "Where is your next charg up comming from? Take a look and find out.",
         search : "Search"
     });
 });
@@ -42,7 +42,7 @@ app.get('/gmaps', (req, res) => {
 app.get('/index', (req, res) => {
     res.render('index', {
         title : "Find a Charging Station",
-        desc : "This is a discription of this feature I need to put more space in here to see what happens",
+        desc : "Where is your next charge up comming from? Take a look and find out.",
         search : "Search"
     });
 });
@@ -96,11 +96,22 @@ app.get('/detail/:id', (req, res) =>{
     fetchCharge(res, url, req.params.id);
 });
 
-app.post('/directions_results', (req, res) => {
+app.post('/directions_results', (req, res) => { //GET FOR TESTING
+    console.log("in form");
+    let output : string = "output=json";
+    let org : string = req.body.to;//FOR TESTING
+    let dest : string = req.body.from;
+    //let distance_u :string = 'distanceunit=Miles';
+    let compact :string = "compact=false";
+    let verbose :string = "verbose=false";
+    let incl_comm :string = "includecomments=true";
+    let max_results:string  = "maxresults=50"
+    let connection_type : string = "connectiontypeid=";
+    let level_id : string = "levelid=";
 
-    res.render('search_results', {
-        Title : 'Results'
-    });
+    let api = require('../public/directions.js');
+    api.results(org,dest, url,verbose, output, incl_comm, max_results, compact, connection_type, level_id,res, req)
+
 });
 
 
