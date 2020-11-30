@@ -72,7 +72,6 @@ module.exports = {
             ret = ret + '&usagetypeid=1,4,5,7';
           }
 
-          // console.log(ret);
 
           request(ret, function (error: any, response: any, body: any): any {
             if (!error && response.statusCode == 200) {
