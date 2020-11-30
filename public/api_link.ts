@@ -16,7 +16,17 @@ function options(options: string[]): string {
 
   return output;
 }
+
 module.exports = {
+  res: function options(options: string[]): string {
+    let output: string = "";
+    let o: string = "";
+    for (o in options)
+      if (output == "") output = options[o];
+      else output += "&" + options[o];
+  
+    return output;
+  },
   addr: function addr_to_latlng(
     addr: any,
     url: string,
