@@ -21,6 +21,3 @@ test('Option Test 5', () => {
   })
 
 //addr tests
-test('addr test 1', () => {
-  expect(options.addr()).toBe("This is one element");
-})
