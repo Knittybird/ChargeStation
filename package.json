@@ -7,10 +7,12 @@
     "url": "git@github.com:Knittybird/ChargeStation.git"
   },
   "main": "dist/scripts/api.js",
+  "engines":  {
+    "node": "12.19.x"
+  }
   "scripts": {
     "start": "node dist/scripts/api.js",
-    "prebuild": "tsc",
-    "build": "node dist/scripts/api.js",
+    "postinstall": "tsc",
     "test": "jest",
     "snap": "jest --updateSnapshot"
   },
