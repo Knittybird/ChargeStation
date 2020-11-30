@@ -2,11 +2,11 @@ import { Location } from "./dataObjects";
 
 export function renderResults(res, json_body, pub=false) {
     let chargers: Location[] = [];
-    console.log(JSON.stringify(json_body, null, 2));
+    // console.log(JSON.stringify(json_body, null, 2));
 
   // for each charger returned grab the location
   // information and push into array of chargers
-  console.log(json_body);
+  // console.log(json_body);
   if(json_body.length < 1)
   {
       res.render("errors/no_results", {

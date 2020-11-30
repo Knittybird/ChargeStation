@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require("express");
 const fetch = require("node-fetch");
-const util = require("util");
 import {Charger} from "./dataObjects";
 import {Connection} from "./dataObjects";
 
@@ -12,10 +11,10 @@ export async function fetchCharge (res, url: string, id: string): Promise<any> {
 
     const results = await fetch(apicall );
     const data: any  = await results.json();
-    console.log(JSON.stringify(data, null, 2))
+    // console.log(JSON.stringify(data, null, 2))
 
     const charger: Charger = parseDetailData(data[0]);
-    console.log(JSON.stringify(charger, null, 2));
+    // console.log(JSON.stringify(charger, null, 2));
     res.render('details', {charger: charger})
 
   } catch (error) {
