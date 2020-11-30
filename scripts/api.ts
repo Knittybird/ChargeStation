@@ -95,11 +95,22 @@ app.get('/detail/:id', (req, res) =>{
     fetchCharge(res, url, req.params.id);
 });
 
-app.post('/directions_results', (req, res) => {
+app.post('/directions_results', (req, res) => { //GET FOR TESTING
+    console.log("in form");
+    let output : string = "output=json";
+    let org : string = "Portland OR";//FOR TESTING
+    let dest : string = "Bend OR";
+    //let distance_u :string = 'distanceunit=Miles';
+    let compact :string = "compact=false";
+    let verbose :string = "verbose=false";
+    let incl_comm :string = "includecomments=true";
+    let max_results:string  = "maxresults=10"
+    let connection_type : string = "connectiontypeid=";
+    let level_id : string = "levelid=";
 
-    res.render('search_results', {
-        Title : 'Results'
-    });
+    let api = require('../public/directions.js');
+    api.results(org,dest, url,verbose, output, incl_comm, max_results, compact, connection_type, level_id,res, req)
+
 });
 
 
