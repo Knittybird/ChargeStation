@@ -148,6 +148,10 @@ app.get('/detail/:id', (req, res) =>{
       state: 'OR',
       postalCode: '97045'
     },
+    pos: {
+      lat: '42.360364',
+      lng: '-71.361095'
+    },
     connectionType: [ { typeId: 1, levelId: 2 }, { typeId: 9, levelId: 1 } ],
     usage: "1",
     operatorTitle: 'SemaCharge Network',

@@ -6,59 +6,70 @@ import {Connection} from "./dataObjects";
 
 export async function fetchCharge (res, url: string, id: string): Promise<any> {
   try {
-    console.log("in fetchDetail")
     let apicall = [url, `chargepointid=${id}`, `maxresults=10`, `verbose=false`].join("&");
-    // console.log(apicall );
+
 
     const results = await fetch(apicall );
     const data: any  = await results.json();
-    console.log(data);
+    // console.log(JSON.stringify(data, null, 2))
 
-    if(data) {
-    const crg: any = data[0];
-    
-    if(crg) {
-    // copy conections into array
-    let connections: Connection[] = [];
-
-    crg.Connections.forEach(connect => {
-      let connector: Connection = {typeId: 0, levelId: 0};
-
-      connector.typeId = connect.ConnectionTypeID;
-      connector.levelId = connect.LevelID;
-      connections.push(connector);
-      console.log(connector);
-      console.log(connections);
-
-    });
-
-    //copy data into charger record
-    let charger : Charger = {
-      id: crg.ID,
-      address: {
-        addressLine: crg.AddressInfo.AddressLine1,
-        title: crg.AddressInfo.Title,
-        town: crg.AddressInfo.Town,
-        state: crg.AddressInfo.StateOrProvince,
-        postalCode: crg.AddressInfo.Postcode,
-      },
-      connectionType: connections,
-      usage: crg.UsageTypeID,
+    const charger: Charger = parseDetailData(data[0]);
+    // console.log(JSON.stringify(charger, null, 2));
+    if (charger) {
+      res.render('details', {charger: charger})
+    } else {
+      res.render("errors/no_results", {
+        title : '0 Results',
+        desc : 'Oops! Looks like we could not find what you were looking for...',
+        search : "Search Again?"
+      });
     }
 
-    if (crg.OperatorInfo){
-      charger.operatorTitle = crg.OperatorInfo.Title,
-      charger.website = crg.OperatorInfo.WebsiteURL
-    }
-    console.log(charger);
-    res.render('details', {charger: charger});
-  }
-  }
   } catch (error) {
     // TODO: output error page
-    res.render('errors/error', {});
     console.log(error);
     // res.render('error', {error: error})
   }
+}
+
+export function parseDetailData (chargeData: any): Charger  {
+
+    // copy conections into array
+    let connections: Connection[] = [];
+    if (chargeData) {
+      if (chargeData.Connections) {
+        chargeData.Connections.forEach (connect => {
+          let connector: Connection = {typeId: 0, levelId: 0};
+          connector.typeId = connect.ConnectionTypeID;
+          connector.levelId = connect.LevelID;
+          connections.push(connector);
+        });
+      }
+
+      //copy data into charger record
+      let charger : Charger = {
+        id: chargeData.ID.toString(),
+        address: {
+          addressLine: chargeData.AddressInfo.AddressLine1,
+          title: chargeData.AddressInfo.Title,
+          town: chargeData.AddressInfo.Town,
+          state: chargeData.AddressInfo.StateOrProvince,
+          postalCode: chargeData.AddressInfo.Postcode,
+        },
+        connectionType: connections,
+        usage: "",
+      }
+
+      if (chargeData.OperatorInfo){
+        charger.operatorTitle = chargeData.OperatorInfo.Title,
+        charger.website = chargeData.OperatorInfo.WebsiteURL
+      }
+      if (chargeData.UsageTypeID){
+        charger.usage = chargeData.UsageTypeID.toString();
+      }
+      return charger;
+    } else {
+      return undefined;
+    }
 }
 
