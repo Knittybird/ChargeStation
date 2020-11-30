@@ -2,28 +2,28 @@
 // to work on styling
 
 import path = require("path");
-import {fetchCharge} from "../public/details"
-import {Charger} from "../public/dataObjects"
-require('dotenv').config();
+import { fetchCharge } from "../public/details";
+import { Charger } from "../public/dataObjects";
+require("dotenv").config();
 
 // set up url for opencharge
-const base : string = 'https://api.openchargemap.io/v3/poi/?'; 
-const chargeKey : string = process.env.OPENCHARGE_KEY
-const url : string = `${base}key=${chargeKey}`; //+ chargeKey;
+const base: string = "https://api.openchargemap.io/v3/poi/?";
+const chargeKey: string = process.env.OPENCHARGE_KEY;
+const url: string = `${base}key=${chargeKey}`; //+ chargeKey;
 
 // set up express and set port
-const express : any = require('express');
-const app : any = express();
+const express: any = require("express");
+const app: any = express();
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
-const port : number = parseInt(process.env.PORT, 10) || 5000;
+const port: number = parseInt(process.env.PORT, 10) || 5000;
 
 // using pug temlates
-app.set('view engine', 'pug');
+app.set("view engine", "pug");
 
 // public folder contains static file(s) that will be served
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 // canned test data. had problems importing it
 const chargers = [
@@ -34,12 +34,12 @@ const chargers = [
       title: "Harrison Tower",
       town: "Portland",
       state: "OR",
-      postalCode: "97201"
+      postalCode: "97201",
     },
     pos: {
       lat: "45.5097989",
-      lng: "-122.6794873"
-    }
+      lng: "-122.6794873",
+    },
   },
   {
     id: "144407",
@@ -48,12 +48,12 @@ const chargers = [
       title: "Park Square",
       town: "Portland",
       state: "OR",
-      postalCode: "97201"
+      postalCode: "97201",
     },
     pos: {
       lat: "45.510792",
-      lng: "-122.67764"
-    }
+      lng: "-122.67764",
+    },
   },
   {
     id: "97419",
@@ -62,12 +62,12 @@ const chargers = [
       title: "Kimpton Riverplace Hotel",
       town: "Portland",
       state: "OR",
-      postalCode: "97201"
+      postalCode: "97201",
     },
     pos: {
       lat: "45.511486",
-      lng: "-122.674101"
-    }
+      lng: "-122.674101",
+    },
   },
   {
     id: "144411",
@@ -76,11 +76,11 @@ const chargers = [
       title: "200 SW Market Building",
       town: "Portland",
       state: "OR",
-      postalCode: "97201"
+      postalCode: "97201",
     },
     pos: {
       lat: "45.511592",
-      lng: "-122.6786039" 
+      lng: "-122.6786039",
     },
   },
   {
@@ -90,12 +90,12 @@ const chargers = [
       title: "Oregon Museum of Science and Industry (OMSI)",
       town: "Portland",
       state: "OR",
-      postalCode: "97214"
+      postalCode: "97214",
     },
     pos: {
       lat: "45.508501",
-      lng: "-122.665932"
-    }
+      lng: "-122.665932",
+    },
   },
   {
     id: "79829",
@@ -104,12 +104,12 @@ const chargers = [
       title: "Portland Marriott Downtown Waterfront",
       town: "Portland",
       state: "OR",
-      postalCode: "97201"
+      postalCode: "97201",
     },
     pos: {
       lat: "45.5123866",
-      lng: "-122.6756475"
-    }
+      lng: "-122.6756475",
+    },
   },
   {
     id: "8473",
@@ -118,53 +118,52 @@ const chargers = [
       title: "2145 SE Water Avenue",
       town: "Portland",
       state: "OR",
-      postalCode: "97214"
+      postalCode: "97214",
     },
     pos: {
       lat: "45.50932",
-      lng: "-122.66639"
-    }
-  }
-]
-
+      lng: "-122.66639",
+    },
+  },
+];
 
 // render result-list page
-app.get('/', (req, res) => {
-
-    res.render('results_list', { 
-      chargers: chargers
-    });
-});
-
-
-// render detail page
-app.get('/detail/:id', (req, res) =>{
-  const params: Charger = {
-    id: "89787",
-    address: {
-      addressLine: '275 Beavercreek Rd',
-      title: 'Hilltop Collision Center',
-      town: 'Oregon City',
-      state: 'OR',
-      postalCode: '97045'
-    },
-    pos: {
-      lat: '42.360364',
-      lng: '-71.361095'
-    },
-    connectionType: [ { typeId: 1, levelId: 2 }, { typeId: 9, levelId: 1 } ],
-    usage: "1",
-    operatorTitle: 'SemaCharge Network',
-    website: 'http://www.semacharge.com'
-  }
-  // fetchCharge(res, url, req.params.id)
-  res.render('details', {
-      Title : 'Test result',
-      charger: params
+app.get("/", (req, res) => {
+  res.render("results_list", {
+    chargers: chargers,
   });
 });
 
+// render detail page
+app.get("/detail/:id", (req, res) => {
+  const params: Charger = {
+    id: "89787",
+    address: {
+      addressLine: "275 Beavercreek Rd",
+      title: "Hilltop Collision Center",
+      town: "Oregon City",
+      state: "OR",
+      postalCode: "97045",
+    },
+    pos: {
+      lat: "42.360364",
+      lng: "-71.361095",
+    },
+    connectionType: [
+      { typeId: 1, levelId: 2 },
+      { typeId: 9, levelId: 1 },
+    ],
+    usage: "1",
+    operatorTitle: "SemaCharge Network",
+    website: "http://www.semacharge.com",
+  };
+  // fetchCharge(res, url, req.params.id)
+  res.render("details", {
+    Title: "Test result",
+    charger: params,
+  });
+});
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${port}`);
 });
